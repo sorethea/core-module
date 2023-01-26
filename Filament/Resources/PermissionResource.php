@@ -28,7 +28,9 @@ class PermissionResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make("name")
+                    ->unique("permissions","name",fn($record)=>$record)
+                    ->required(),
             ]);
     }
 
@@ -36,7 +38,8 @@ class PermissionResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make("name")->searchable(),
+                Tables\Columns\TextColumn::make("created_at")->since(),
             ])
             ->filters([
                 //

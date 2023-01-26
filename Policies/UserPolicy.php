@@ -16,4 +16,8 @@ class UserPolicy
     public function viewAny(User $user): bool{
         return $user->can("users.viewAny");
     }
+
+    public function view(User $user, User $model): bool{
+        return $user->can("users.view");
+    }
 }
