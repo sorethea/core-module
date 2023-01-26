@@ -9,7 +9,7 @@ use Modules\Core\Policies\UserPolicy;
 class AuthServiceProvider extends ServiceProvider
 {
     protected $policies =[
-        User::class=>UserPolicy::class,
+        //User::class=>UserPolicy::class,
     ];
     public function register()
     {
