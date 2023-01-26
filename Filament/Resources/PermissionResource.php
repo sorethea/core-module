@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Filament\Resources;
 
+use Faker\Provider\Text;
 use Modules\Core\Filament\Resources\PermissionResource\Pages;
 use Modules\Core\Filament\Resources\PermissionResource\RelationManagers;
 use Filament\Forms;
@@ -31,6 +32,9 @@ class PermissionResource extends Resource
                 Forms\Components\TextInput::make("name")
                     ->unique("permissions","name",fn($record)=>$record)
                     ->required(),
+                Forms\Components\BelongsToManyMultiSelect::make("roles")
+                    ->relationship("roles","name")
+                    ->searchable(),
             ]);
     }
 
@@ -39,6 +43,7 @@ class PermissionResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make("name")->searchable(),
+                Tables\Columns\TextColumn::make("roles.name")->searchable(),
                 Tables\Columns\TextColumn::make("created_at")->since(),
             ])
             ->filters([
