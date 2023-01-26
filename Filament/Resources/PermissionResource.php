@@ -29,13 +29,16 @@ class PermissionResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make("name")
-                    ->unique("permissions","name",fn($record)=>$record)
-                    ->required(),
-                Forms\Components\BelongsToManyMultiSelect::make("roles")
-                    ->relationship("roles","name")
-                    ->searchable(),
-            ]);
+                Forms\Components\Card::make([
+                    Forms\Components\TextInput::make("name")
+                        ->unique("permissions","name",fn($record)=>$record)
+                        ->required(),
+                    Forms\Components\BelongsToManyMultiSelect::make("roles")
+                        ->relationship("roles","name")
+                        ->searchable(),
+                ])->columnSpan(2)->columns(2),
+
+            ])->columns(3);
     }
 
     public static function table(Table $table): Table
