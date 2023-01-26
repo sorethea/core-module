@@ -28,7 +28,26 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Card::make([
+                    Forms\Components\TextInput::make("name")
+                        ->required(),
+                    Forms\Components\TextInput::make("email")
+                        ->required()
+                        ->unique("users","email",ignorable: fn($record)=>$record),
+                    Forms\Components\TextInput::make("password")
+                        ->password()
+                        ->required()
+                        ->visibleOn("create")
+                        ->same("password_confirmation"),
+                    Forms\Components\TextInput::make("password_confirmation")
+                        ->password()
+                        ->visibleOn("create")
+                        ->required(),
+                    Forms\Components\BelongsToManyMultiSelect::make("roles")
+                        ->relationship("roles","nmae"),
+                    Forms\Components\SpatieMediaLibraryFileUpload::make("avatar")
+                        ->collection('avatar')->image(),
+                ])->columns(2)->columnSpan(2),
             ]);
     }
 
