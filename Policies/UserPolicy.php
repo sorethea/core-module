@@ -9,7 +9,7 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
-    public function after(User $user): bool{
+    public function before(User $user): bool{
         return $user->can("users.manager");
     }
 
