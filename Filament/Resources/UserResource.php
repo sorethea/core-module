@@ -44,7 +44,7 @@ class UserResource extends Resource
                         ->visibleOn("create")
                         ->required(),
                     Forms\Components\BelongsToManyMultiSelect::make("roles")
-                        ->relationship("roles","nmae"),
+                        ->relationship("roles","name"),
                     Forms\Components\SpatieMediaLibraryFileUpload::make("avatar")
                         ->collection('avatar')->image(),
                 ])->columns(2)->columnSpan(2),
