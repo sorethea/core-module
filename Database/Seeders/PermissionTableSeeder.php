@@ -5,6 +5,7 @@ namespace Modules\Core\Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -37,10 +38,10 @@ class PermissionTableSeeder extends Seeder
             $manage = Permission::findOrCreate($model.'.manage');
             $role->givePermissionTo($manage);
         }
-        $user = User::create([
+        $user = User::findOrCreate([
             "name"=>"Administrator",
             "email"=>"admin@demo.com",
-            "password"=>"12345678"
+            "password"=>Hash::make("12345678"),
         ]);
         $user->assignRole($role);
 
