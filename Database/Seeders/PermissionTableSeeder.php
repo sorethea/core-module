@@ -38,7 +38,7 @@ class PermissionTableSeeder extends Seeder
             $manage = Permission::findOrCreate($model.'.manage');
             $role->givePermissionTo($manage);
         }
-        $user = User::findOrCreate([
+        $user = User::create([
             "name"=>"Administrator",
             "email"=>"admin@demo.com",
             "password"=>Hash::make("12345678"),
