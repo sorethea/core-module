@@ -39,7 +39,7 @@ class PermissionTableSeeder extends Seeder
         }
         $user = User::create([
             "name"=>"Administrator",
-            "email"=>"admin",
+            "email"=>"admin@demo.com",
             "password"=>"12345678"
         ]);
         $user->assignRole($role);
