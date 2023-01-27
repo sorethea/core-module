@@ -28,15 +28,22 @@ class PermissionTableSeeder extends Seeder
             "permissions",
         ];
         foreach ($models as $model){
-            Permission::findOrCreate($model.'.viewAny');
-            Permission::findOrCreate($model.'.view');
-            Permission::findOrCreate($model.'.create');
-            Permission::findOrCreate($model.'.update');
-            Permission::findOrCreate($model.'.delete');
-            Permission::findOrCreate($model.'.restore');
-            Permission::findOrCreate($model.'.forceDelete');
-            $manage = Permission::findOrCreate($model.'.manager');
-            $role->givePermissionTo($manage);
+            Permission::findOrCreate(['name'=>$model.'.viewAny','module'=>$module]);
+            Permission::findOrCreate(['name'=>$model.'.view','module'=>$module]);
+            Permission::findOrCreate(['name'=>$model.'.create','module'=>$module]);
+            Permission::findOrCreate(['name'=>$model.'.update','module'=>$module]);
+            Permission::findOrCreate(['name'=>$model.'.delete','module'=>$module]);
+            Permission::findOrCreate(['name'=>$model.'.restore','module'=>$module]);
+            Permission::findOrCreate(['name'=>$model.'.forceDelete','module'=>$module]);
+            $manager = Permission::findOrCreate(['name'=>$model.'.manager','module'=>$module]);
+//            Permission::findOrCreate($model.'.view');
+//            Permission::findOrCreate($model.'.create');
+//            Permission::findOrCreate($model.'.update');
+//            Permission::findOrCreate($model.'.delete');
+//            Permission::findOrCreate($model.'.restore');
+//            Permission::findOrCreate($model.'.forceDelete');
+//            $manage = Permission::findOrCreate($model.'.manager');
+            $role->givePermissionTo($manager);
         }
         $user = User::create([
             "name"=>"Administrator",
