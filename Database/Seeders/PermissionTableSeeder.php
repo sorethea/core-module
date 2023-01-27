@@ -35,7 +35,7 @@ class PermissionTableSeeder extends Seeder
             Permission::findOrCreate($model.'.delete');
             Permission::findOrCreate($model.'.restore');
             Permission::findOrCreate($model.'.forceDelete');
-            $manage = Permission::findOrCreate($model.'.manage');
+            $manage = Permission::findOrCreate($model.'.manager');
             $role->givePermissionTo($manage);
         }
         $user = User::create([
