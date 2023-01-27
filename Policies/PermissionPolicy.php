@@ -10,7 +10,7 @@ class PermissionPolicy
     use HandlesAuthorization;
 
     public function before(User $user): bool{
-        return $user->can("permission.manager");
+        return $user->can("permissions.manager");
     }
 
     public function viewAny(User $user): bool{
