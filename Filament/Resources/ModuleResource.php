@@ -4,7 +4,6 @@ namespace Modules\Core\Filament\Resources;
 
 use Modules\Core\Filament\Resources\ModuleResource\Pages;
 use Modules\Core\Filament\Resources\ModuleResource\RelationManagers;
-use Modules\Core\Models\Module;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -12,6 +11,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Nwidart\Modules\Laravel\Module;
 
 class ModuleResource extends Resource
 {
