@@ -61,8 +61,8 @@ class ModuleResource extends Resource
                     ->color("success")
                     //->icon('heroicon-o-check')
                     ->button()
-                    ->render()
-                    ->visible(fn($record)=>!$record->enabled && auth()->user()->can("modules.manager") && $record->name != "Core"),
+                    ->visible(fn($record)=>!$record->enabled && auth()->user()->can("modules.manager") && $record->name != "Core")
+                    ->render(),
                 Action::make('disable')
                     ->requiresConfirmation()
                     ->modalHeading(fn($record)=>"Disable {$record->name} Module")
@@ -72,11 +72,11 @@ class ModuleResource extends Resource
                         $record->enabled = false;
                         $record->save();
                     })
-                    ->render()
                     //->icon('heroicon-o-x')
                     ->button()
                     ->color("warning")
-                    ->visible(fn($record)=>$record->enabled && auth()->user()->can("modules.manager") && $record->name != "Core"),
+                    ->visible(fn($record)=>$record->enabled && auth()->user()->can("modules.manager") && $record->name != "Core")
+                    ->render(),
 //                DeleteAction::make()
 //                    ->icon(false)
 //                    ->button()
