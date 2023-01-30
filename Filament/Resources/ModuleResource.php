@@ -61,6 +61,7 @@ class ModuleResource extends Resource
                     ->color("success")
                     //->icon('heroicon-o-check')
                     ->button()
+                    ->render()
                     ->visible(fn($record)=>!$record->enabled && auth()->user()->can("modules.manager") && $record->name != "Core"),
                 Action::make('disable')
                     ->requiresConfirmation()
@@ -71,6 +72,7 @@ class ModuleResource extends Resource
                         $record->enabled = false;
                         $record->save();
                     })
+                    ->render()
                     //->icon('heroicon-o-x')
                     ->button()
                     ->color("warning")
