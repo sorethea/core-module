@@ -26,16 +26,25 @@ class ListModules extends ListRecords
 
     public function loadModules(): void{
         $modules = \Module::all();
+        $name_modules = [];
         foreach ($modules as $module){
             $installed = false;
             if($module->getName()=="Core"){
                 $installed = true;
             }
+            $name_modules[] = $module->getName();
             Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
                 'enabled'=>$module->isEnabled(),
                 'installed'=>$installed,
             ]);
+        }
+        $table_modules = Module::all("name")->toArray();
+        $diff = array_diff($table_modules,$name_modules);
+        if(!empty($diff)){
+            foreach ($diff as $name){
+                Module::where("name",$name)->delete();
+            }
         }
         $this->render();
     }
