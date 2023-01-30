@@ -33,11 +33,12 @@ class ListModules extends ListRecords
                 $installed = true;
             }
             $name_modules[] = $module->getName();
-            Module::query()->firstOrCreate([
+            $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
-                'enabled'=>$module->isEnabled(),
-                'installed'=>$installed,
             ]);
+            $model->enabled = $module->isEnabled();
+            $model->installed = $installed;
+            $model->save();
         }
         $table_modules = Module::all()->pluck("name")->toArray();
         $diff = array_diff($table_modules,$name_modules);
