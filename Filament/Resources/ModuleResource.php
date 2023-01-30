@@ -4,6 +4,7 @@ namespace Modules\Core\Filament\Resources;
 
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\DeleteAction;
+use Illuminate\Support\Facades\Artisan;
 use Modules\Core\Filament\Resources\ModuleResource\Pages;
 use Modules\Core\Filament\Resources\ModuleResource\RelationManagers;
 use Filament\Forms;
@@ -60,7 +61,7 @@ class ModuleResource extends Resource
                     ->color("success")
                     //->icon('heroicon-o-check')
                     ->button()
-                    ->visible(fn($record)=>!$record->enabled && auth()->user()->can("modules.manage") && $record->name != "System"),
+                    ->visible(fn($record)=>!$record->enabled && auth()->user()->can("modules.manager") && $record->name != "System"),
                 Action::make('disable')
                     ->requiresConfirmation()
                     ->modalHeading(fn($record)=>"Disable {$record->name} Module")
@@ -73,12 +74,12 @@ class ModuleResource extends Resource
                     //->icon('heroicon-o-x')
                     ->button()
                     ->color("warning")
-                    ->visible(fn($record)=>$record->enabled && auth()->user()->can("modules.manage") && $record->name != "System"),
-                DeleteAction::make()
-                    ->icon(false)
-                    ->button()
-                    ->after(fn($record)=>Artisan::call("module:delete {$record->name}"))
-                    ->visible(fn($record)=>$record->name!="System"),
+                    ->visible(fn($record)=>$record->enabled && auth()->user()->can("modules.manager") && $record->name != "System"),
+//                DeleteAction::make()
+//                    ->icon(false)
+//                    ->button()
+//                    ->after(fn($record)=>Artisan::call("module:delete {$record->name}"))
+//                    ->visible(fn($record)=>$record->name!="System"),
             ])
             ->bulkActions([
                 //Tables\Actions\DeleteBulkAction::make(),
