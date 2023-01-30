@@ -40,6 +40,7 @@ class ListModules extends ListRecords
             ]);
         }
         $table_modules = Module::all("name")->toArray();
+        dd($table_modules);
         $diff = array_diff($table_modules,$name_modules);
         if(!empty($diff)){
             foreach ($diff as $name){
