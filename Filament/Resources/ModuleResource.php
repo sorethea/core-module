@@ -36,7 +36,9 @@ class ModuleResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make("name")->searchable(),
+                Tables\Columns\BooleanColumn::make("enabled"),
+                Tables\Columns\BooleanColumn::make("installed"),
             ])
             ->filters([
                 //
@@ -60,8 +62,8 @@ class ModuleResource extends Resource
     {
         return [
             'index' => Pages\ListModules::route('/'),
-            'create' => Pages\CreateModule::route('/create'),
-            'edit' => Pages\EditModule::route('/{record}/edit'),
+            //'create' => Pages\CreateModule::route('/create'),
+            //'edit' => Pages\EditModule::route('/{record}/edit'),
         ];
     }
 }
