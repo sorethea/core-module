@@ -11,7 +11,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Nwidart\Modules\Laravel\Module;
+use Modules\Core\Models\Module;
 
 class ModuleResource extends Resource
 {
