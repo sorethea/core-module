@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Filament\Resources;
 
+use Filament\Pages\Actions\Modal\Actions\Action;
 use Modules\Core\Filament\Resources\ModuleResource\Pages;
 use Modules\Core\Filament\Resources\ModuleResource\RelationManagers;
 use Filament\Forms;
@@ -45,6 +46,38 @@ class ModuleResource extends Resource
             ])
             ->actions([
                 //Tables\Actions\EditAction::make(),
+
+                Action::make('enable')
+                    ->requiresConfirmation()
+                    ->modalHeading(fn($record)=>"Enable {$record->name} Module")
+                    ->action(function ($record){
+                        $module = \Module::find($record->name);
+                        $module->enable();
+                        $record->enabled = true;
+                        $record->save();
+                    })
+                    ->color("success")
+                    //->icon('heroicon-o-check')
+                    ->button()
+                    ->visible(fn($record)=>!$record->enabled && auth()->user()->can("modules.manage") && $record->name != "System"),
+                Action::make('disable')
+                    ->requiresConfirmation()
+                    ->modalHeading(fn($record)=>"Disable {$record->name} Module")
+                    ->action(function ($record){
+                        $module = \Module::find($record->name);
+                        $module->disable();
+                        $record->enabled = false;
+                        $record->save();
+                    })
+                    //->icon('heroicon-o-x')
+                    ->button()
+                    ->color("warning")
+                    ->visible(fn($record)=>$record->enabled && auth()->user()->can("modules.manage") && $record->name != "System"),
+                DeleteAction::make()
+                    ->icon(false)
+                    ->button()
+                    ->after(fn($record)=>Artisan::call("module:delete {$record->name}"))
+                    ->visible(fn($record)=>$record->name!="System"),
             ])
             ->bulkActions([
                 //Tables\Actions\DeleteBulkAction::make(),
