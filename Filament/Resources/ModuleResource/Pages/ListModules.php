@@ -39,8 +39,7 @@ class ListModules extends ListRecords
                 'installed'=>$installed,
             ]);
         }
-        $table_modules = Module::all("name")->toArray();
-        dd($name_modules);
+        $table_modules = Module::all()->pluck("name")->toArray();
         $diff = array_diff($table_modules,$name_modules);
         if(!empty($diff)){
             foreach ($diff as $name){
