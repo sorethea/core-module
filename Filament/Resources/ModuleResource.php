@@ -2,7 +2,7 @@
 
 namespace Modules\Core\Filament\Resources;
 
-use Filament\Tables\Actions\Modal\Actions\Action;
+use Filament\Tables\Actions\Action;
 use Modules\Core\Filament\Resources\ModuleResource\Pages;
 use Modules\Core\Filament\Resources\ModuleResource\RelationManagers;
 use Filament\Forms;
