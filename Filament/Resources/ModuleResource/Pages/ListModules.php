@@ -34,7 +34,7 @@ class ListModules extends ListRecords
                 'name'=>$module->getName(),
             ]);
             $enabled = $module->isEnabled();
-            if(!$model->installed && $enabled && $module->getType()!='core'){
+            if(!$model->installed && $enabled && $module->getName()!='Core'){
                 $module->disable();
             }
             $model->enabled = $module->isEnabled();
