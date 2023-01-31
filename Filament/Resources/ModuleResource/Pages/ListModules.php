@@ -27,7 +27,6 @@ class ListModules extends ListRecords
 
     public function loadModules(): void{
         $modules = \Module::all();
-        dd($modules);
         $name_modules = [];
         foreach ($modules as $module){
             $name_modules[] = $module->getName();
@@ -35,7 +34,7 @@ class ListModules extends ListRecords
                 'name'=>$module->getName(),
             ]);
             $enabled = $module->isEnabled();
-            if(!$model->installed && $enabled){
+            if(!$model->installed && $enabled && $module->getType()!='core'){
                 $module->disable();
             }
             $model->enabled = $module->isEnabled();
