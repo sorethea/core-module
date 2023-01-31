@@ -103,7 +103,7 @@ class ModuleResource extends Resource
                 Action::make("uninstallation")
                     ->modalHeading()
                     ->button()
-                    ->color('second')
+                    ->color('blue')
                     ->requiresConfirmation(),
 //                DeleteAction::make()
 //                    ->icon(false)
