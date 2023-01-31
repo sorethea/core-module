@@ -27,11 +27,9 @@ class ListModules extends ListRecords
 
     public function loadModules(): void{
         $modules = \Module::all();
+        dd($modules);
         $name_modules = [];
         foreach ($modules as $module){
-            if($module->getName()=="Core"){
-                $installed = true;
-            }
             $name_modules[] = $module->getName();
             $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
