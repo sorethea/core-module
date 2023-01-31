@@ -100,6 +100,11 @@ class ModuleResource extends Resource
                         $record->save();
                         redirect(request()->header("Referer"));
                     }),
+                Action::make("uninstallation")
+                    ->modalHeading()
+                    ->button()
+                    ->color('second')
+                    ->requiresConfirmation(),
 //                DeleteAction::make()
 //                    ->icon(false)
 //                    ->button()
