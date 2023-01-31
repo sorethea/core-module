@@ -30,20 +30,20 @@ class ListModules extends ListRecords
         $name_modules = [];
         foreach ($modules as $module){
             $name_modules[] = $module->getName();
-            $type = \Core::getType($module->getName());
+            $class = \Core::getType($module->getName());
 
             $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
             ]);
             $enabled = $module->isEnabled();
-            if(!$model->installed && $enabled && $type!='core'){
+            if(!$model->installed && $enabled && $class!='core'){
                 $module->disable();
             }
             $model->enabled = $module->isEnabled();
-            if($type=='core' && !$model->installed){
+            if($class=='core' && !$model->installed){
                 $model->installed = true;
             }
-            $model->type = $type;
+            $model->class = $class;
             $model->save();
         }
         $table_modules = Module::all()->pluck("name")->toArray();
