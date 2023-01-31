@@ -88,7 +88,7 @@ class ModuleResource extends Resource
                     ->requiresConfirmation()
                     ->modalHeading()
                     ->button()
-                    ->color('primary')
+                    ->color('danger')
                     ->visible(fn($record)=>!$record->installed
                         && auth()->user()->can("modules.manager"))
                     ->action(function ($record){
@@ -104,9 +104,18 @@ class ModuleResource extends Resource
                 Action::make("uninstallation")
                     ->modalHeading()
                     ->button()
-                    ->color('primary')
+                    ->color('danger')
                     ->visible(fn($record)=>$record->installed && $record->class!='core'
                         && auth()->user()->can("modules.manager"))
+                    ->action(function($record){
+                        $module = \Module::find($record->name);
+                        Artisan::call("module:migrate-rollback ".$module->getName());
+                        $module->disable();
+                        $record->enabled = $module->isEnabled();
+                        $record->installed = false;
+                        $record->save();
+                        redirect(request()->header("Referer"));
+                    })
                     ->requiresConfirmation(),
 //                DeleteAction::make()
 //                    ->icon(false)
