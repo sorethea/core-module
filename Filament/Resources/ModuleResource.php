@@ -93,7 +93,7 @@ class ModuleResource extends Resource
                 Action::make('installation')
                     ->requiresConfirmation()
                     ->modalHeading()
-                    ->button('heroicon-trash')
+                    ->button()
                     ->color('danger')
                     ->visible(function ($record){
                         $module = \Module::find($record->name);
@@ -115,7 +115,7 @@ class ModuleResource extends Resource
                 Action::make("uninstallation")
                     ->modalHeading()
                     ->iconButton()
-                    ->icon()
+                    ->icon('heroicon-trash')
                     ->color('danger')
                     ->visible(function ($record){
                         $module = \Module::find($record->name);
