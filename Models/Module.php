@@ -11,13 +11,13 @@ class Module extends Model
 
     protected $fillable = [
         "name",
-        "enabled",
+        //"enabled",
         "installed",
     ];
 
     protected $casts = [
         "name"=>"string",
-        "enabled"=>"boolean",
+        //"enabled"=>"boolean",
         "installed"=>"boolean",
     ];
     protected static function newFactory()
