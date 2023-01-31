@@ -29,12 +29,9 @@ class ListModules extends ListRecords
         $modules = \Module::all();
         $name_modules = [];
         foreach ($modules as $module){
-            $installed = false;
             $name_modules[] = $module->getName();
             $type = \Core::getType($module->getName());
-            if($type=='core'){
-                $installed = true;
-            }
+
             $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
             ]);
@@ -43,7 +40,9 @@ class ListModules extends ListRecords
                 $module->disable();
             }
             $model->enabled = $module->isEnabled();
-            $model->installed = $installed;
+            if($type=='core' && !$model->installed){
+                $model->installed = true;
+            }
             $model->type = $type;
             $model->save();
         }
