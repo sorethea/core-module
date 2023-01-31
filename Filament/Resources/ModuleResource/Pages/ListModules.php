@@ -29,15 +29,21 @@ class ListModules extends ListRecords
         $modules = \Module::all();
         $name_modules = [];
         foreach ($modules as $module){
+            $installed = false;
             $name_modules[] = $module->getName();
+            $type = \Core::getType($module->getName());
+            if($type=='core'){
+                $installed = true;
+            }
             $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
             ]);
             $enabled = $module->isEnabled();
-            if(!$model->installed && $enabled && $module->getName()!='Core'){
+            if(!$model->installed && $enabled && $type!='core'){
                 $module->disable();
             }
             $model->enabled = $module->isEnabled();
+            $model->installed = $installed;
             $model->save();
         }
         $table_modules = Module::all()->pluck("name")->toArray();
