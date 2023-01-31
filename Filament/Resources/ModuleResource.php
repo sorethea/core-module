@@ -105,7 +105,7 @@ class ModuleResource extends Resource
                     ->modalHeading()
                     ->button()
                     ->color('primary')
-                    ->visible(fn($record)=>$record->installed
+                    ->visible(fn($record)=>$record->installed && $record->class!='core'
                         && auth()->user()->can("modules.manager"))
                     ->requiresConfirmation(),
 //                DeleteAction::make()
