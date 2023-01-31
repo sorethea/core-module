@@ -104,7 +104,9 @@ class ModuleResource extends Resource
                 Action::make("uninstallation")
                     ->modalHeading()
                     ->button()
-                    ->color('default')
+                    ->color('primary')
+                    ->visible(fn($record)=>$record->installed
+                        && auth()->user()->can("modules.manager"))
                     ->requiresConfirmation(),
 //                DeleteAction::make()
 //                    ->icon(false)
