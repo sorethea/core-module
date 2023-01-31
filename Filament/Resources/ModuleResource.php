@@ -83,6 +83,12 @@ class ModuleResource extends Resource
                             && $record->installed
                             && auth()->user()->can("modules.manager")
                             && $record->name != "Core"),
+                Action::make('installation')
+                    ->requiresConfirmation()
+                    ->modalHeading()
+                    ->action(function (){
+
+                    }),
 //                DeleteAction::make()
 //                    ->icon(false)
 //                    ->button()
