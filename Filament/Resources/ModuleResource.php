@@ -63,10 +63,14 @@ class ModuleResource extends Resource
                     ->color("success")
                     //->icon('heroicon-o-check')
                     ->button()
-                    ->visible(fn($record)=>!$record->enabled
-                            && $record->installed
-                            && auth()->user()->can("modules.manager")
-                            && $record->name != "Core"),
+                    ->visible(function($record){
+                        $module = \Module::find($record->name);
+                        $class = \Core::getClass($module->getName());
+                        return auth()->user()->can("modules.manager")
+                            && $class !="core"
+                            && !$module->isEnabled()
+                            && $record->installed;
+                    }),
                 Action::make('disable')
                     ->requiresConfirmation()
                     ->modalHeading(fn($record)=>"Disable {$record->name} Module")
