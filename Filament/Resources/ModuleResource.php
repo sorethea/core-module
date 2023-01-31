@@ -40,6 +40,7 @@ class ModuleResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make("name")->searchable(),
+                Tables\Columns\TextColumn::make("class")->searchable(),
                 Tables\Columns\BooleanColumn::make("enabled"),
                 Tables\Columns\BooleanColumn::make("installed"),
             ])
