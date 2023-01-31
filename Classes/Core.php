@@ -7,7 +7,7 @@ class Core
     public function getType($moduleName):string{
         $type = 'module';
         $module = \Module::find($moduleName);
-        dd($module->module);
+        dd($module);
         return $type;
     }
 }
