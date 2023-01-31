@@ -80,17 +80,26 @@ class ModuleResource extends Resource
                     //->icon('heroicon-o-x')
                     ->button()
                     ->color("warning")
-                    ->visible(fn($record)=>$record->enabled
-                            && $record->installed
-                            && auth()->user()->can("modules.manager")
-                            && $record->name != "Core"),
+                    ->visible(function($record){
+                        $module = \Module::find($record->name);
+                        $class = \Core::getClass($module->getName());
+                        return auth()->user()->can("modules.manager")
+                            && $class !="core"
+                            && $module->isEnabled()
+                            && $record->installed;
+                    }),
                 Action::make('installation')
                     ->requiresConfirmation()
                     ->modalHeading()
                     ->button()
                     ->color('danger')
-                    ->visible(fn($record)=>!$record->installed
-                        && auth()->user()->can("modules.manager"))
+                    ->visible(function ($record){
+                        $module = \Module::find($record->name);
+                        $class = \Core::getClass($module->getName());
+                        return auth()->user()->can("modules.manager")
+                            && $class !="core"
+                            && !$record->installed;
+                    })
                     ->action(function ($record){
                         $module = \Module::find($record->name);
                         Artisan::call("module:migrate ".$module->getName());
@@ -105,8 +114,13 @@ class ModuleResource extends Resource
                     ->modalHeading()
                     ->button()
                     ->color('danger')
-                    ->visible(fn($record)=>$record->installed && $record->class!='core'
-                        && auth()->user()->can("modules.manager"))
+                    ->visible(function ($record){
+                        $module = \Module::find($record->name);
+                        $class = \Core::getClass($module->getName());
+                        return auth()->user()->can("modules.manager")
+                            && $class !="core"
+                            && $record->installed;
+                    })
                     ->action(function($record){
                         $module = \Module::find($record->name);
                         Artisan::call("module:migrate-rollback ".$module->getName());
