@@ -61,7 +61,7 @@ class ModuleResource extends Resource
                         redirect(request()->header("Referer"));
                     })
                     ->color("success")
-                    ->icon('heroicon-check')
+                    ->icon('heroicon-o-check-cycle')
                     ->iconButton()
                     ->visible(function($record){
                         $module = \Module::find($record->name);
@@ -79,7 +79,7 @@ class ModuleResource extends Resource
                         $module->disable();
                         redirect(request()->header("Referer"));
                     })
-                    ->icon('heroicon-ban')
+                    ->icon('heroicon-o-ban')
                     ->iconButton()
                     ->color("warning")
                     ->visible(function($record){
@@ -115,7 +115,7 @@ class ModuleResource extends Resource
                 Action::make("uninstallation")
                     ->modalHeading()
                     ->iconButton()
-                    ->icon('heroicon-trash')
+                    ->icon('heroicon-o-trash')
                     ->color('danger')
                     ->visible(function ($record){
                         $module = \Module::find($record->name);
