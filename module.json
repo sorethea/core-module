@@ -4,7 +4,7 @@
     "description": "",
     "keywords": [],
     "priority": 0,
-    "type": "core",
+    "class": "core",
     "providers": [
         "Modules\\Core\\Providers\\CoreServiceProvider"
     ],
