@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('modules', function (Blueprint $table) {
             $table->id();
             $table->string("name")->unique();
-            $table->string("class")->default("module");
-            $table->boolean("enabled")->default(false);
+            //$table->string("class")->default("module");
+            //$table->boolean("enabled")->default(false);
             $table->boolean("installed")->default(false);
             $table->timestamps();
         });

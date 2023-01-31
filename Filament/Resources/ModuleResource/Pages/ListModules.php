@@ -39,11 +39,11 @@ class ListModules extends ListRecords
             if(!$model->installed && $enabled && $class!='core'){
                 $module->disable();
             }
-            $model->enabled = $module->isEnabled();
+            //$model->enabled = $module->isEnabled();
             if($class=='core' && !$model->installed){
                 $model->installed = true;
             }
-            $model->class = $class;
+            //$model->class = $class;
             $model->save();
         }
         $table_modules = Module::all()->pluck("name")->toArray();
