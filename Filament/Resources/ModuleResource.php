@@ -92,7 +92,7 @@ class ModuleResource extends Resource
                         && auth()->user()->can("modules.manager"))
                     ->action(function ($record){
                         $module = \Module::find($record->name);
-                        Artisan::call("module:migrate-fresh ".$module->getName());
+                        Artisan::call("module:migrate ".$module->getName());
                         Artisan::call("module:seed ".$module->getName());
                         $module->enable();
                         redirect(request()->header("Referer"));
