@@ -57,6 +57,7 @@ class ModuleResource extends Resource
                         $module->enable();
                         $record->enabled = true;
                         $record->save();
+                        redirect(request()->header("Referer"));
                     })
                     ->color("success")
                     //->icon('heroicon-o-check')
@@ -70,6 +71,7 @@ class ModuleResource extends Resource
                         $module->disable();
                         $record->enabled = false;
                         $record->save();
+                        redirect(request()->header("Referer"));
                     })
                     //->icon('heroicon-o-x')
                     ->button()
