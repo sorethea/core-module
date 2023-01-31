@@ -95,7 +95,7 @@ class ModuleResource extends Resource
                         Artisan::call("module:migrate ".$module->getName());
                         Artisan::call("module:seed ".$module->getName());
                         $module->enable();
-                        $record->enabled = $module->isEnable();
+                        $record->enabled = true;
                         $record->installed = true;
                         $record->save();
                         redirect(request()->header("Referer"));
