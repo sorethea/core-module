@@ -56,8 +56,8 @@ class ModuleResource extends Resource
                     ->action(function ($record){
                         $module = \Module::find($record->name);
                         $module->enable();
-                        $record->enabled = true;
-                        $record->save();
+                        //$record->enabled = true;
+                        //$record->save();
                         redirect(request()->header("Referer"));
                     })
                     ->color("success")
@@ -73,8 +73,8 @@ class ModuleResource extends Resource
                     ->action(function ($record){
                         $module = \Module::find($record->name);
                         $module->disable();
-                        $record->enabled = false;
-                        $record->save();
+                        //$record->enabled = false;
+                        //$record->save();
                         redirect(request()->header("Referer"));
                     })
                     //->icon('heroicon-o-x')
@@ -96,7 +96,7 @@ class ModuleResource extends Resource
                         Artisan::call("module:migrate ".$module->getName());
                         Artisan::call("module:seed ".$module->getName());
                         $module->enable();
-                        $record->enabled = $module->isEnabled();
+                        //$record->enabled = $module->isEnabled();
                         $record->installed = true;
                         $record->save();
                         redirect(request()->header("Referer"));
@@ -111,7 +111,7 @@ class ModuleResource extends Resource
                         $module = \Module::find($record->name);
                         Artisan::call("module:migrate-rollback ".$module->getName());
                         $module->disable();
-                        $record->enabled = $module->isEnabled();
+                        //$record->enabled = $module->isEnabled();
                         $record->installed = false;
                         $record->save();
                         redirect(request()->header("Referer"));
