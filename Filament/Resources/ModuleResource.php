@@ -86,6 +86,10 @@ class ModuleResource extends Resource
                 Action::make('installation')
                     ->requiresConfirmation()
                     ->modalHeading()
+                    ->button()
+                    ->color('primary')
+                    ->visible(fn($record)=>!$record->installed
+                        && auth()->user()->can("modules.manager"))
                     ->action(function (){
 
                     }),
