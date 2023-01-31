@@ -44,6 +44,7 @@ class ListModules extends ListRecords
             }
             $model->enabled = $module->isEnabled();
             $model->installed = $installed;
+            $model->type = $type;
             $model->save();
         }
         $table_modules = Module::all()->pluck("name")->toArray();
