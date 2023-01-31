@@ -51,7 +51,7 @@ class FilamentServiceProvider extends PluginServiceProvider
             Filament::registerNavigationGroups([
                 NavigationGroup::make()
                     ->label(config('core.navigation.name'))
-                    ->icon('heroicon-x-adjustments')
+                    ->icon('heroicon-m-adjustments')
             ]);
         });
         return parent::boot();
