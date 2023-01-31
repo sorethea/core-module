@@ -90,8 +90,12 @@ class ModuleResource extends Resource
                     ->color('primary')
                     ->visible(fn($record)=>!$record->installed
                         && auth()->user()->can("modules.manager"))
-                    ->action(function (){
-
+                    ->action(function ($record){
+                        $module = \Module::find($record->name);
+                        Artisan::call("module:migrate-fresh ".$module->getName());
+                        Artisan::call("module:seed ".$module->getName());
+                        $module->enable();
+                        redirect(request()->header("Referer"));
                     }),
 //                DeleteAction::make()
 //                    ->icon(false)

@@ -38,7 +38,7 @@ class ListModules extends ListRecords
             ]);
             $enabled = $module->isEnabled();
             if(!$model->installed && $enabled){
-                Artisan::call("module:disable ".$module->getName());
+                $module->disable();
             }
             $model->enabled = $module->isEnabled();
             $model->save();
