@@ -61,8 +61,8 @@ class ModuleResource extends Resource
                         redirect(request()->header("Referer"));
                     })
                     ->color("success")
-                    //->icon('heroicon-o-check')
-                    ->button()
+                    ->icon('heroicon-o-check')
+                    ->iconButton()
                     ->visible(function($record){
                         $module = \Module::find($record->name);
                         $class = \Core::getClass($module->getName());
@@ -77,12 +77,10 @@ class ModuleResource extends Resource
                     ->action(function ($record){
                         $module = \Module::find($record->name);
                         $module->disable();
-                        //$record->enabled = false;
-                        //$record->save();
                         redirect(request()->header("Referer"));
                     })
-                    //->icon('heroicon-o-x')
-                    ->button()
+                    ->icon('heroicon-o-ban')
+                    ->iconButton()
                     ->color("warning")
                     ->visible(function($record){
                         $module = \Module::find($record->name);
