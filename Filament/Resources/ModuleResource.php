@@ -61,7 +61,7 @@ class ModuleResource extends Resource
                         redirect(request()->header("Referer"));
                     })
                     ->color("success")
-                    ->icon('heroicon-o-check-cycle')
+                    ->icon('heroicon-o-check-circle')
                     ->iconButton()
                     ->visible(function($record){
                         $module = \Module::find($record->name);
