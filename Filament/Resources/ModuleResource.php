@@ -61,7 +61,7 @@ class ModuleResource extends Resource
                         redirect(request()->header("Referer"));
                     })
                     ->color("success")
-                    ->icon('heroicon-o-check')
+                    ->icon('heroicon-check')
                     ->iconButton()
                     ->visible(function($record){
                         $module = \Module::find($record->name);
@@ -79,7 +79,7 @@ class ModuleResource extends Resource
                         $module->disable();
                         redirect(request()->header("Referer"));
                     })
-                    ->icon('heroicon-o-ban')
+                    ->icon('heroicon-ban')
                     ->iconButton()
                     ->color("warning")
                     ->visible(function($record){
