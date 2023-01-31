@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Filament\Resources\ModuleResource\Pages;
 
+use Illuminate\Support\Facades\Artisan;
 use Modules\Core\Filament\Resources\ModuleResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
@@ -28,7 +29,6 @@ class ListModules extends ListRecords
         $modules = \Module::all();
         $name_modules = [];
         foreach ($modules as $module){
-            $installed = false;
             if($module->getName()=="Core"){
                 $installed = true;
             }
@@ -36,8 +36,11 @@ class ListModules extends ListRecords
             $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
             ]);
+            $enabled = $module->isEnabled();
+            if(!$model->installed && $enabled){
+                Artisan::call("module:disable ".$module->getName());
+            }
             $model->enabled = $module->isEnabled();
-            $model->installed = $installed;
             $model->save();
         }
         $table_modules = Module::all()->pluck("name")->toArray();
