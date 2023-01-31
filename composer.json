@@ -14,7 +14,7 @@
                 "Modules\\Core\\Providers\\CoreServiceProvider"
             ],
             "aliases": {
-
+                "Core": "Modules\\Core\\Facades\\Core"
             }
         }
     },
