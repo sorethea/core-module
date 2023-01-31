@@ -62,7 +62,7 @@ class ModuleResource extends Resource
                     })
                     ->color("success")
                     ->icon('heroicon-o-check-circle')
-                    ->size('xl')
+                    ->size('lg')
                     ->iconButton()
                     ->visible(function($record){
                         $module = \Module::find($record->name);
