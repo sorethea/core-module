@@ -45,6 +45,8 @@ class ActivityResource extends Resource
                         ->label("Old")
                         ->keyLabel("Column")
                         ->valueLabel("Value"),
+                    Tables\Columns\TextColumn::make("created_at"),
+                    Tables\Columns\TextColumn::make("updated_at"),
                 ])
                     ->columns(2)
                     ->columnSpan(2),
