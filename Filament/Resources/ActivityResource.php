@@ -51,6 +51,11 @@ class ActivityResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->latest();
+    }
+
     public static function table(Table $table): Table
     {
         return $table
