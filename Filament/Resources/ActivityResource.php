@@ -44,7 +44,9 @@ class ActivityResource extends Resource
                         ->label("Old")
                         ->keyLabel("Column")
                         ->valueLabel("Value"),
-                ]),
+                ])
+                    ->columns(2)
+                    ->columnSpan(2),
 
             ]);
     }
