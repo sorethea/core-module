@@ -11,6 +11,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Tables\Columns\PopOver;
 use Spatie\Activitylog\Models\Activity;
 
 class ActivityResource extends Resource
@@ -45,6 +46,7 @@ class ActivityResource extends Resource
                 Tables\Columns\TextColumn::make("subject_id"),
                 Tables\Columns\TextColumn::make("subject_type"),
                 Tables\Columns\TextColumn::make("changes"),
+                PopOver::make("changes"),
             ])
             ->filters([
                 //
