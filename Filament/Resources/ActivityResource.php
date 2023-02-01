@@ -69,8 +69,7 @@ class ActivityResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make("subject.name")
                     ->searchable(),
-                Forms\Components\TextInput::make("updated_at")->disabled(true)
-                    ->default(fn($record)=>Carbon::make($record->updated_at)->since()),
+                Tables\Columns\TextColumn::make("updated_at")->since(),
             ])
             ->filters([
                 //
