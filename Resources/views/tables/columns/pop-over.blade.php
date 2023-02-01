@@ -1,6 +1,6 @@
 <div>
     {{ $getState() }}
-    <x-filament-popover::preview :view="'your-view-blade'"
+    <x-filament-popover::preview :view="'core::popover-table'"
                                  :viewData="[]"
                                  :allowHTML="true"
                                  :arrow="false"
