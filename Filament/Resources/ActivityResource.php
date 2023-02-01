@@ -34,7 +34,12 @@ class ActivityResource extends Resource
                     Forms\Components\TextInput::make("event"),
                     Forms\Components\BelongsToSelect::make("causer")
                         ->relationship("causer","name"),
-                    Forms\Components\KeyValue::make("subject"),
+                    Forms\Components\BelongsToSelect::make("subject")
+                        ->relationship("subject",function ($record){
+                            if(!empty($record->name)){
+                                return "name";
+                            }
+                        }),
                     Forms\Components\KeyValue::make("properties.attributes")
                         ->label("Attributes")
                         ->keyLabel("Column")
