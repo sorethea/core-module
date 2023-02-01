@@ -39,11 +39,16 @@ class ActivityResource extends Resource
                 Tables\Columns\TextColumn::make("log_name")
                     ->label("name")
                     ->searchable(),
+                Tables\Columns\TextColumn::make("event")
+                    ->searchable(),
                 Tables\Columns\TextColumn::make("causer.name")
                     ->searchable(),
                 Tables\Columns\TextColumn::make("subject_id"),
                 Tables\Columns\TextColumn::make("subject_type"),
-                Tables\Columns\TextColumn::make("properties.attributes"),
+                Tables\Columns\TextColumn::make("properties.old")
+                    ->label('old'),
+                Tables\Columns\TextColumn::make("properties.attributes")
+                    ->label('attributes'),
 
             ])
             ->filters([
