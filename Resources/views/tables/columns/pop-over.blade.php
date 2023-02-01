@@ -1,7 +1,6 @@
 <div>
     {{ $getState() }}
-    <x-filament-popover::preview :model="$model"
-                                 :view="'your-view-blade'"
+    <x-filament-popover::preview :view="'your-view-blade'"
                                  :viewData="[]"
                                  :allowHTML="true"
                                  :arrow="false"
