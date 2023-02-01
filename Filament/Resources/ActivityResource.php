@@ -36,8 +36,7 @@ class ActivityResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make("log_name")
-                    ->label("name")
+                Tables\Columns\TextColumn::make("description")
                     ->searchable(),
                 Tables\Columns\TextColumn::make("event")
                     ->searchable(),
