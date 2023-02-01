@@ -46,9 +46,9 @@ class ActivityResource extends Resource
                 Tables\Columns\TextColumn::make("subject_id"),
                 Tables\Columns\TextColumn::make("subject_type"),
                 Tables\Columns\TextColumn::make("properties.old")
-                    ->label('old'),
+                    ->label('Old'),
                 Tables\Columns\TextColumn::make("properties.attributes")
-                    ->label('attributes'),
+                    ->label('Attributes'),
 
             ])
             ->filters([
