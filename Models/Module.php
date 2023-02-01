@@ -29,6 +29,8 @@ class Module extends Model
 
     public function getActivitylogOptions(): LogOptions
     {
-        return LogOptions::defaults()->logOnly(['name',"installed"]);
+        return LogOptions::defaults()
+            ->logOnly(['name',"installed"])
+            ->useLogName(fn($eventName)=>"Module has been {$eventName}");
     }
 }
