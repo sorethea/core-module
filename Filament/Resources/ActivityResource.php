@@ -29,7 +29,8 @@ class ActivityResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\KeyValue::make("changes")
+                Forms\Components\KeyValue::make("properties.attributes")
+                    ->label("Attributes")
                     ->keyLabel("Column")
                     ->valueLabel("Value")
             ]);
