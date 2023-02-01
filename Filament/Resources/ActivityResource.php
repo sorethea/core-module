@@ -69,7 +69,7 @@ class ActivityResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make("subject.name")
                     ->searchable(),
-                Tables\Columns\TextColumn::make("updated_at")->since(),
+                Tables\Columns\TextColumn::make("created_at")->since(),
             ])
             ->filters([
                 //
