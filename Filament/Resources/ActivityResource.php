@@ -45,7 +45,7 @@ class ActivityResource extends Resource
                         ->label("Old")
                         ->keyLabel("Column")
                         ->valueLabel("Value"),
-                    Forms\Components\DatePicker::make("created_at")
+                    Forms\Components\DateTimePicker::make("created_at")
                         ->format('d M, Y H:i:s'),
                 ])
                     ->columns(2)
