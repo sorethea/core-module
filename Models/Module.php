@@ -31,6 +31,6 @@ class Module extends Model
     {
         return LogOptions::defaults()
             ->logOnly(['name',"installed"])
-            ->useLogName(fn($eventName)=>"Module has been {$eventName}");
+            ->setDescriptionForEvent(fn($eventName):string=>"Module has been {$eventName}");
     }
 }
