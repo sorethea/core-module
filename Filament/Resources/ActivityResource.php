@@ -45,7 +45,7 @@ class ActivityResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make("subject_id"),
                 Tables\Columns\TextColumn::make("subject_type"),
-                Tables\Columns\TextColumn::make("changes"),
+                //Tables\Columns\TextColumn::make("changes"),
                 PopOver::make("changes"),
             ])
             ->filters([
