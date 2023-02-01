@@ -27,7 +27,6 @@ class FilamentServiceProvider extends PluginServiceProvider
         PermissionResource::class,
         ActivityResource::class,
         ModuleResource::class,
-        SettingResource::class,
     ];
     public function configurePackage(Package $package): void
     {

@@ -36,7 +36,15 @@ class ActivityResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make("log_name")
+                    ->label("name")
+                    ->searchable(),
+                Tables\Columns\TextColumn::make("causer.name")
+                    ->searchable(),
+                Tables\Columns\TextColumn::make("subject_id"),
+                Tables\Columns\TextColumn::make("subject_type"),
+                Tables\Columns\TextColumn::make("properties.attributes"),
+
             ])
             ->filters([
                 //
