@@ -3,7 +3,6 @@
 namespace Modules\Core\Filament\Resources;
 
 use Modules\Core\Filament\Resources\RoleResource\Pages;
-use Modules\Core\Filament\Resources\RoleResource\RelationManagers;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -11,6 +10,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Resources\RoleResource\RelationManagers\PermissionsRelationManager;
 use Spatie\Permission\Models\Role;
 
 class RoleResource extends Resource
@@ -58,7 +58,7 @@ class RoleResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            PermissionsRelationManager::class,
         ];
     }
 
