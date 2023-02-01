@@ -38,7 +38,7 @@ class PermissionResource extends Resource
                         ->searchable(),
                 ])->columnSpan(2)->columns(2),
 
-            ])->columns(3);
+            ]);
     }
 
     public static function table(Table $table): Table

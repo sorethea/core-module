@@ -28,9 +28,12 @@ class RoleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make("name")
-                    ->unique("roles","name",fn($record)=>$record)
-                    ->required(),
+                Forms\Components\Card::make([
+                    Forms\Components\TextInput::make("name")
+                        ->unique("roles","name",fn($record)=>$record)
+                        ->required(),
+                ])->columnSpan(2)
+                ->columns(2)
             ]);
     }
 
