@@ -29,7 +29,9 @@ class ActivityResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\KeyValue::make("changes")
+                    ->keyLabel("Column")
+                    ->valueLabel("Value")
             ]);
     }
 
@@ -46,7 +48,6 @@ class ActivityResource extends Resource
                 Tables\Columns\TextColumn::make("subject_id"),
                 Tables\Columns\TextColumn::make("subject_type"),
                 //Tables\Columns\TextColumn::make("changes"),
-                PopOver::make("changes"),
             ])
             ->filters([
                 //
