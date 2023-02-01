@@ -44,10 +44,6 @@ class ActivityResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make("subject_id"),
                 Tables\Columns\TextColumn::make("subject_type"),
-                Tables\Columns\TextColumn::make("properties.old")
-                    ->label('Old'),
-                Tables\Columns\TextColumn::make("properties.attributes")
-                    ->label('Attributes'),
                 Tables\Columns\TextColumn::make("changes"),
             ])
             ->filters([
