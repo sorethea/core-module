@@ -29,11 +29,17 @@ class ActivityResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\KeyValue::make("changes.attributes")
+                Forms\Components\TextInput::make("description"),
+                Forms\Components\TextInput::make("event"),
+                Forms\Components\TextInput::make("causer_id"),
+                Forms\Components\TextInput::make("causer_type"),
+                Forms\Components\TextInput::make("subject_id"),
+                Forms\Components\TextInput::make("subject_type"),
+                Forms\Components\KeyValue::make("properties.attributes")
                     ->label("Attributes")
                     ->keyLabel("Column")
                     ->valueLabel("Value"),
-                Forms\Components\KeyValue::make("changes.old")
+                Forms\Components\KeyValue::make("properties.old")
                     ->label("Old")
                     ->keyLabel("Column")
                     ->valueLabel("Value"),
