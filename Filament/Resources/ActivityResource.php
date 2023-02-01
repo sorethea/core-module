@@ -45,8 +45,8 @@ class ActivityResource extends Resource
                         ->label("Old")
                         ->keyLabel("Column")
                         ->valueLabel("Value"),
-                    Forms\Components\TextInput::make("created_at")
-                        ->default(fn($record)=>Carbon::make($record->created_at)->format('d M, Y H:i:s')),
+                    Forms\Components\DatePicker::make("created_at")
+                        ->format('d M, Y H:i:s'),
                 ])
                     ->columns(2)
                     ->columnSpan(2),
