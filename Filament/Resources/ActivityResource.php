@@ -48,7 +48,7 @@ class ActivityResource extends Resource
                     ->label('Old'),
                 Tables\Columns\TextColumn::make("properties.attributes")
                     ->label('Attributes'),
-
+                Tables\Columns\TextColumn::make("changes"),
             ])
             ->filters([
                 //
