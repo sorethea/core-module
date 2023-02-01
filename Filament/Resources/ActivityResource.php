@@ -66,9 +66,8 @@ class ActivityResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make("causer.name")
                     ->searchable(),
-                Tables\Columns\TextColumn::make("subject_id"),
-                Tables\Columns\TextColumn::make("subject_type"),
-                //Tables\Columns\TextColumn::make("changes"),
+                Tables\Columns\TextColumn::make("subject.name")
+                    ->searchable(),
             ])
             ->filters([
                 //
