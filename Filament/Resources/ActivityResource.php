@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Filament\Resources;
 
+use Carbon\Carbon;
 use Modules\Core\Filament\Resources\ActivityResource\Pages;
 use Modules\Core\Filament\Resources\ActivityResource\RelationManagers;
 use Filament\Forms;
@@ -68,6 +69,8 @@ class ActivityResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make("subject.name")
                     ->searchable(),
+                Forms\Components\TextInput::make("updated_at")->disabled(true)
+                    ->default(fn($record)=>Carbon::make($record->updated_at)->since()),
             ])
             ->filters([
                 //
