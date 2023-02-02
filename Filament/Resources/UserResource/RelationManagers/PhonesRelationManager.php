@@ -21,7 +21,9 @@ class PhonesRelationManager extends RelationManager
                 Forms\Components\TextInput::make('phone_number')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Toggle::make('default'),
+                Forms\Components\TextInput::make('remark')
+                    ->maxLength(255),
+                Forms\Components\Toggle::make('is_default'),
             ]);
     }
 
