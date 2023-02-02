@@ -21,6 +21,7 @@ class PhonesRelationManager extends RelationManager
                 Forms\Components\TextInput::make('phone_number')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Toggle::make('default'),
             ]);
     }
 
@@ -28,7 +29,9 @@ class PhonesRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('phone_number'),
+                Tables\Columns\TextColumn::make('phone_number')->searchable(),
+                Tables\Columns\TextColumn::make("status"),
+                Tables\Columns\BooleanColumn::make('default'),
             ])
             ->filters([
                 //
