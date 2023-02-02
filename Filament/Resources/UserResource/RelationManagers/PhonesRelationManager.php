@@ -36,8 +36,7 @@ class PhonesRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('phone_number')->searchable(),
                 Tables\Columns\TextColumn::make("remark"),
-                //Tables\Columns\BooleanColumn::make('is_default'),
-                Tables\Columns\ToggleColumn::make('is_default'),
+                Tables\Columns\ToggleColumn::make('is_default')->render(),
             ])
             ->filters([
                 //
