@@ -3,6 +3,7 @@
 namespace Modules\Core\Filament\Resources;
 
 use App\Models\User;
+use Modules\Core\Filament\Resources\PhoneResource\RelationManagers\PhonesRelationManager;
 use Modules\Core\Filament\Resources\UserResource\Pages;
 use Modules\Core\Filament\Resources\UserResource\RelationManagers;
 use Filament\Forms;
@@ -60,8 +61,8 @@ class UserResource extends Resource
                     ->conversion("thumb")
                     ->rounded(),
                 Tables\Columns\TextColumn::make("name")->searchable(),
-                Tables\Columns\TextColumn::make("email")->searchable(),
                 Tables\Columns\TextColumn::make("phone")->searchable(),
+                Tables\Columns\TextColumn::make("email")->searchable(),
                 Tables\Columns\TextColumn::make("roles.name")->searchable(),
                 Tables\Columns\TextColumn::make("created_at")->since(),
             ])
@@ -79,7 +80,7 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            PhonesRelationManager::class
         ];
     }
 
