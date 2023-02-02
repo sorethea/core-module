@@ -27,6 +27,9 @@ class PhonesRelationManager extends RelationManager
             ]);
     }
 
+    public function defaultPhone($record){
+
+    }
     public static function table(Table $table): Table
     {
         return $table
@@ -51,7 +54,16 @@ class PhonesRelationManager extends RelationManager
                 }),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->after(function ($record){
+                    if($record->is_default){
+                        foreach ($record->owner()->phones as $phone){
+                            if($phone->phone_number != $record->phone_number){
+                                $phone->is_default=false;
+                                $phone->save();
+                            }
+                        }
+                    }
+                }),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
