@@ -39,7 +39,9 @@ class PhonesRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()->after(function ($record){
+                    info($record->phone_number);
+                }),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
