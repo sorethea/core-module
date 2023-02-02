@@ -3,9 +3,7 @@
 namespace Modules\Core\Filament\Resources;
 
 use App\Models\User;
-use Modules\Core\Filament\Resources\PhoneResource\RelationManagers\PhonesRelationManager;
 use Modules\Core\Filament\Resources\UserResource\Pages;
-use Modules\Core\Filament\Resources\UserResource\RelationManagers;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,6 +11,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Core\Filament\Resources\UserResoure\RelationManagers\PhonesRelationManager;
 
 class UserResource extends Resource
 {

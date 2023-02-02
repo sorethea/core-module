@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Core\Filament\Resources\PhoneResource\RelationManagers;
+namespace Modules\Core\Filament\Resources\UserResoure\RelationManagers;
 
 use Filament\Forms;
 use Filament\Resources\Form;
