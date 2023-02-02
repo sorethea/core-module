@@ -42,28 +42,10 @@ class PhonesRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make()->after(function ($record){
-                    if($record->is_default){
-                        foreach ($record->owner->phones as $phone){
-                            if($phone->phone_number != $record->phone_number){
-                                $phone->is_default=false;
-                                $phone->save();
-                            }
-                        }
-                    }
-                }),
+                Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make()->after(function ($record){
-                    if($record->is_default){
-                        foreach ($record->owner->phones as $phone){
-                            if($phone->phone_number != $record->phone_number){
-                                $phone->is_default=false;
-                                $phone->save();
-                            }
-                        }
-                    }
-                }),
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
