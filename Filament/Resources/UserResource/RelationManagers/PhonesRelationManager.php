@@ -40,8 +40,14 @@ class PhonesRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()->after(function ($record){
-                    logger($record->phone_number);
-                    info($record->phone_number);
+                    if($record->is_default){
+                        foreach ($record->owner()->phones as $phone){
+                            if($phone->phone_number != $record->phone_number){
+                                $phone->is_default=false;
+                                $phone->save();
+                            }
+                        }
+                    }
                 }),
             ])
             ->actions([
