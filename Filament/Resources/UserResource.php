@@ -61,6 +61,7 @@ class UserResource extends Resource
                     ->rounded(),
                 Tables\Columns\TextColumn::make("name")->searchable(),
                 Tables\Columns\TextColumn::make("email")->searchable(),
+                Tables\Columns\TextColumn::make("phone")->searchable(),
                 Tables\Columns\TextColumn::make("roles.name")->searchable(),
                 Tables\Columns\TextColumn::make("created_at")->since(),
             ])
