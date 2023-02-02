@@ -21,8 +21,10 @@ class AddressesRelationManager extends RelationManager
                 Forms\Components\TextInput::make('address')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('location'),
                 Forms\Components\TextInput::make('city'),
                 Forms\Components\TextInput::make('country'),
+                Forms\Components\Toggle::make("is_default")
             ]);
     }
 
