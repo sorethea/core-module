@@ -40,6 +40,7 @@ class PhonesRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()->after(function ($record){
+                    logger($record->phone_number);
                     info($record->phone_number);
                 }),
             ])
