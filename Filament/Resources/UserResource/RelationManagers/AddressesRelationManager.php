@@ -35,6 +35,7 @@ class AddressesRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('address')->searchable(),
                 Tables\Columns\TextColumn::make('city')->searchable(),
                 Tables\Columns\TextColumn::make('country')->searchable(),
+                Tables\Columns\BooleanColumn::make("is_default"),
             ])
             ->filters([
                 //
