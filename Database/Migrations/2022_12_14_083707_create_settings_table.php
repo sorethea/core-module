@@ -8,7 +8,7 @@ class CreateSettingsTable extends Migration
 {
     public function up()
     {
-        Schema::create('Settings', function (Blueprint $table): void {
+        Schema::create('settings', function (Blueprint $table): void {
             $table->id();
 
             $table->string('group')->index();
