@@ -20,7 +20,6 @@
     },
     "require": {
         "php": ">=8.0",
-        "filament-popover": "1.*",
         "filament/spatie-laravel-settings-plugin":"2.*",
         "laravel/framework": "~9.0",
         "spatie/laravel-permission": "5.*",
