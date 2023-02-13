@@ -27,7 +27,6 @@ class PermissionTableSeeder extends Seeder
             "roles",
             "permissions",
             "modules",
-            "Settings",
             "activities",
         ];
         foreach ($models as $model){
