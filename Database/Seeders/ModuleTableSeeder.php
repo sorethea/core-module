@@ -16,6 +16,7 @@ class ModuleTableSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        \Module::enable("core");
         $module = Module::firstOrCreate(["name" => "Core"]);
         $module->installed = true;
         $module->save();
