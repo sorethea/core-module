@@ -4,8 +4,9 @@ namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Core\Models\Module;
 
-class CoreDatabaseSeeder extends Seeder
+class ModuleTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +16,8 @@ class CoreDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        $this->call(ModuleTableSeeder::class);
-        $this->call(PermissionTableSeeder::class);
+        $module = Module::firstOrCreate(["name" => "Core"]);
+        $module->installed = true;
+        $module->save();
     }
 }
