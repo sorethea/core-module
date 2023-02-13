@@ -8,5 +8,6 @@
     "providers": [
         "Modules\\Core\\Providers\\CoreServiceProvider"
     ],
-    "files": []
+    "files": [],
+    "version": 1.00
 }

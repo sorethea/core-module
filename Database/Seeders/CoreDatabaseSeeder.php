@@ -15,7 +15,7 @@ class CoreDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        $this->call(ModuleTableSeeder::class);
-        $this->call(PermissionTableSeeder::class);
+        //$this->call(ModuleTableSeeder::class);
+        //$this->call(PermissionTableSeeder::class);
     }
 }
