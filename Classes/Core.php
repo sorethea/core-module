@@ -20,6 +20,7 @@ class Core
     public function install(string $moduleName):void {
         $module = \Module::find($moduleName);
         $module->enable();
+        dd(config("modules.namespace","Modules")."\\".$moduleName."\\".config("modules.paths.generator.provider","Providers")."\\InstallServiceProvider");
         app()->register(config("modules.namespace","Modules")."\\".$moduleName."\\".config("modules.paths.generator.provider","Providers")."\\InstallServiceProvider");
     }
     public function uninstall(string $moduleName):void {
