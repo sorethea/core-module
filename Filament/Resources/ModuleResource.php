@@ -100,19 +100,20 @@ class ModuleResource extends Resource
                     ->icon('heroicon-o-download')
                     ->size('lg')
                     ->color('danger')
-                    ->visible(function ($record){
-                        $module = \Module::find($record->name);
-                        $class = \Core::getClass($module->getName());
-                        return auth()->user()->can("modules.manager")
-                            && $class !="core"
-                            && !$record->installed;
+                    ->visible(function ($record):bool{
+                        return \Core::isInstalled($record->name);
+//                        $module = \Module::find($record->name);
+//                        $class = \Core::getClass($module->getName());
+//                        return auth()->user()->can("modules.manager")
+//                            && $class !="core"
+//                            && !$record->installed;
                     })
                     ->action(function ($record){
-                        $module = \Module::find($record->name);
-                        Artisan::call("module:migrate ".$module->getName());
-                        Artisan::call("module:seed ".$module->getName());
-                        $module->enable();
-                        //$record->enabled = $module->isEnabled();
+                        //$module = \Module::find($record->name);
+                        //Artisan::call("module:migrate ".$module->getName());
+                        //Artisan::call("module:seed ".$module->getName());
+                        //$module->enable();
+                        \Core::install($record->name);
                         $record->installed = true;
                         $record->save();
                         redirect(request()->header("Referer"));
@@ -123,18 +124,19 @@ class ModuleResource extends Resource
                     ->icon('heroicon-o-trash')
                     ->size('lg')
                     ->color('danger')
-                    ->visible(function ($record){
-                        $module = \Module::find($record->name);
-                        $class = \Core::getClass($module->getName());
-                        return auth()->user()->can("modules.manager")
-                            && $class !="core"
-                            && $record->installed;
+                    ->visible(function ($record):bool{
+//                        $module = \Module::find($record->name);
+//                        $class = \Core::getClass($module->getName());
+//                        return auth()->user()->can("modules.manager")
+//                            && $class !="core"
+//                            && $record->installed;
+                        return !\Core::isInstalled($record->name);
                     })
                     ->action(function($record){
-                        $module = \Module::find($record->name);
-                        Artisan::call("module:migrate-rollback ".$module->getName());
-                        $module->disable();
-                        //$record->enabled = $module->isEnabled();
+                        //$module = \Module::find($record->name);
+                        //Artisan::call("module:migrate-rollback ".$module->getName());
+                        //$module->disable();
+                        \Core::uninstall($record->name);
                         $record->installed = false;
                         $record->save();
                         redirect(request()->header("Referer"));
