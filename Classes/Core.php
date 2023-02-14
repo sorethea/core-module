@@ -20,12 +20,11 @@ class Core
     public function install(string $moduleName):void {
         $module = \Module::find($moduleName);
         $module->enable();
-        dd($module->getPath());
-        //app()->register($module->getPath())
+        app()->register(config("modules.namespace","Modules")."\\".$moduleName."\\".config("modules.paths.generator.provider","Providers")."\\InstallServiceProvider");
     }
     public function uninstall(string $moduleName):void {
         $module = \Module::find($moduleName);
-        dd($module->getPath());
+        dd($module->get());
         Artisan::call("module:migrate-rollback ".$module->getName());
         $module->disable();
     }
