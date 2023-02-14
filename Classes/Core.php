@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Artisan;
 
 class Core
 {
+    public function getModuleNamespace(){
+        return config("modules.namespace","Modules");
+    }
+    public function getModuleProviderPath(){
+        return config("modules.paths.generator.provider.path","Providers");
+    }
     public function getClass(string $moduleName):string{
         $module = \Module::find($moduleName);
         $json = json_decode(file_get_contents($module->getPath()."/module.json"), true);
@@ -20,8 +26,7 @@ class Core
     public function install(string $moduleName):void {
         $module = \Module::find($moduleName);
         $module->enable();
-        dd(config("modules.namespace","Modules")."\\".$moduleName."\\".config("modules.paths.generator.provider","Providers")."\\InstallServiceProvider");
-        app()->register(config("modules.namespace","Modules")."\\".$moduleName."\\".config("modules.paths.generator.provider","Providers")."\\InstallServiceProvider");
+        app()->register($this->getModuleNamespace()."\\".$moduleName."\\".$this->getModuleProviderPath()."\\InstallServiceProvider");
     }
     public function uninstall(string $moduleName):void {
         $module = \Module::find($moduleName);
