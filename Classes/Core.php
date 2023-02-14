@@ -25,6 +25,7 @@ class Core
     }
     public function uninstall(string $moduleName):void {
         $module = \Module::find($moduleName);
+        dd($module->getPath());
         Artisan::call("module:migrate-rollback ".$module->getName());
         $module->disable();
     }
