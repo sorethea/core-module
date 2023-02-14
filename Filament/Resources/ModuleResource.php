@@ -67,9 +67,8 @@ class ModuleResource extends Resource
                     ->iconButton()
                     ->visible(function($record){
                         $module = \Module::find($record->name);
-                        $class = \Core::getClass($module->getName());
                         return auth()->user()->can("modules.manager")
-                            && $class !="core"
+                            && !\Core::isCore($record->name)
                             && !$module->isEnabled()
                             && $record->installed;
                     }),
@@ -87,9 +86,8 @@ class ModuleResource extends Resource
                     ->color("warning")
                     ->visible(function($record){
                         $module = \Module::find($record->name);
-                        $class = \Core::getClass($module->getName());
                         return auth()->user()->can("modules.manager")
-                            && $class !="core"
+                            && !\Core::isCore($record->name)
                             && $module->isEnabled()
                             && $record->installed;
                     }),
@@ -120,12 +118,7 @@ class ModuleResource extends Resource
                     ->size('lg')
                     ->color('danger')
                     ->visible(function ($record):bool{
-//                        $module = \Module::find($record->name);
-//                        $class = \Core::getClass($module->getName());
-//                        return auth()->user()->can("modules.manager")
-//                            && $class !="core"
-//                            && $record->installed;
-                        return !\Core::isInstalled($record->name);
+                        return !\Core::isCore($record->name) && $record->installed && auth()->user()->can("modules.manager");
                     })
                     ->action(function($record){
                         //$module = \Module::find($record->name);
