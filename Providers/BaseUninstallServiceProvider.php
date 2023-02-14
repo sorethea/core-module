@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class BaseUninstallServiceProvider extends ServiceProvider
 {
+    protected $migrations = [];
     public function boot()
     {
         app()->booted(function () {
