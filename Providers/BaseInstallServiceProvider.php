@@ -23,12 +23,13 @@ class BaseInstallServiceProvider extends ServiceProvider
     public function install(){
 
     }
-    protected function migrate(){
+    protected function createSchema(){
         foreach ($this->migrations as $migration){
             $migrationObj = new $migration();
             $migrationObj->up();
         }
     }
+
 
     protected function installPublicAssets()
     {

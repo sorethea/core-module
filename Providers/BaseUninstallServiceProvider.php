@@ -6,23 +6,28 @@ use Illuminate\Support\ServiceProvider;
 
 class BaseUninstallServiceProvider extends ServiceProvider
 {
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
+    public function boot()
     {
-        //
+        app()->booted(function () {
+            $this->uninstall();
+        });
     }
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
+    public function uninstall(){
+
+    }
+
+    protected function dropSchema($reverseMigrations = true)
     {
-        return [];
+        if ($reverseMigrations) {
+            $migrations = array_reverse($this->migrations);
+        } else {
+            $migrations = $this->migrations;
+        }
+
+        foreach ($migrations as $migration) {
+            $migrationObject = new $migration();
+            $migrationObject->down();
+        }
     }
 }
