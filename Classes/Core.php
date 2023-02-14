@@ -2,6 +2,8 @@
 
 namespace Modules\Core\Classes;
 
+use Illuminate\Support\Facades\Artisan;
+
 class Core
 {
     public function getClass(string $moduleName):string{
@@ -16,10 +18,15 @@ class Core
     }
 
     public function install(string $moduleName):void {
-
+        $module = \Module::find($moduleName);
+        Artisan::call("module:migrate ".$module->getName());
+        Artisan::call("module:seed ".$module->getName());
+        $module->enable();
     }
     public function uninstall(string $moduleName):void {
-
+        $module = \Module::find($moduleName);
+        Artisan::call("module:migrate-rollback ".$module->getName());
+        $module->disable();
     }
     public function isCore(string $moduleName):bool {
         $class = \Core::getClass($moduleName);

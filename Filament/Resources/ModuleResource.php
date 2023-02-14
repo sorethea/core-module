@@ -57,8 +57,6 @@ class ModuleResource extends Resource
                     ->action(function ($record){
                         $module = \Module::find($record->name);
                         $module->enable();
-                        //$record->enabled = true;
-                        //$record->save();
                         redirect(request()->header("Referer"));
                     })
                     ->color("success")
@@ -102,10 +100,7 @@ class ModuleResource extends Resource
                         return !\Core::isCore($record->name) && !$record->installed && auth()->user()->can("modules.manager");
                     })
                     ->action(function ($record){
-                        //$module = \Module::find($record->name);
-                        //Artisan::call("module:migrate ".$module->getName());
-                        //Artisan::call("module:seed ".$module->getName());
-                        //$module->enable();
+
                         \Core::install($record->name);
                         $record->installed = true;
                         $record->save();
@@ -121,9 +116,6 @@ class ModuleResource extends Resource
                         return !\Core::isCore($record->name) && $record->installed && auth()->user()->can("modules.manager");
                     })
                     ->action(function($record){
-                        //$module = \Module::find($record->name);
-                        //Artisan::call("module:migrate-rollback ".$module->getName());
-                        //$module->disable();
                         \Core::uninstall($record->name);
                         $record->installed = false;
                         $record->save();
