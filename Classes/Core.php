@@ -19,9 +19,9 @@ class Core
 
     public function install(string $moduleName):void {
         $module = \Module::find($moduleName);
-        Artisan::call("module:migrate ".$module->getName());
-        Artisan::call("module:seed ".$module->getName());
         $module->enable();
+        dd($module->getPath());
+        //app()->register($module->getPath())
     }
     public function uninstall(string $moduleName):void {
         $module = \Module::find($moduleName);

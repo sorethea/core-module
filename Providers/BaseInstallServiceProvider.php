@@ -6,17 +6,27 @@ use Illuminate\Support\ServiceProvider;
 
 class BaseInstallServiceProvider extends ServiceProvider
 {
-
+    protected $migrations = [];
     protected $module_public_path = '';
 
 
     public function boot()
     {
         app()->booted(function () {
-            $this->booted();
+            $this->install();
             $this->installPublicAssets();
-            \Cache::flush();
+            \Artisan::call("cache:clear");
         });
+    }
+
+    public function install(){
+
+    }
+    protected function migrate(){
+        foreach ($this->migrations as $migration){
+            $migrationObj = new $migration();
+            $migrationObj->up();
+        }
     }
 
     protected function installPublicAssets()
