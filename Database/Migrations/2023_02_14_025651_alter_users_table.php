@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table("users",function (Blueprint $table){
-            $table->addColumn("string","module",["default"=>null]);
+            $table->string("module",35)->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table("users",function (Blueprint $table){
-            $table->removeColumn("module");
+            $table->dropColumn("module");
         });
     }
 };
