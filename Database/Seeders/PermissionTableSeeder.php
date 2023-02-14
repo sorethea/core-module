@@ -54,7 +54,6 @@ class PermissionTableSeeder extends Seeder
             "name"=>"Administrator",
             "email"=>"admin@demo.com",
             "password"=>Hash::make("12345678"),
-            "module"=>"core",
         ]);
         $user->assignRole($role);
     }
