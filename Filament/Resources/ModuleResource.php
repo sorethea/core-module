@@ -101,12 +101,7 @@ class ModuleResource extends Resource
                     ->size('lg')
                     ->color('danger')
                     ->visible(function ($record):bool{
-                        return \Core::isInstalled($record->name);
-//                        $module = \Module::find($record->name);
-//                        $class = \Core::getClass($module->getName());
-//                        return auth()->user()->can("modules.manager")
-//                            && $class !="core"
-//                            && !$record->installed;
+                        return !\Core::isCore($record->name) && !$record->installed && auth()->user()->can("modules.manager");
                     })
                     ->action(function ($record){
                         //$module = \Module::find($record->name);

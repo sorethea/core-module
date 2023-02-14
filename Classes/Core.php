@@ -16,12 +16,13 @@ class Core
     }
 
     public function install(string $moduleName):void {
-        
+
     }
     public function uninstall(string $moduleName):void {
 
     }
-    public function isInstalled(string $moduleName):void {
-
+    public function isCore(string $moduleName):bool {
+        $class = \Core::getClass($moduleName);
+        return $class =="core";
     }
 }
