@@ -28,8 +28,7 @@ class Core
 
     public function getModuleData(string $moduleName): array{
         $module = \Module::find($moduleName);
-        $json = json_decode(file_get_contents($module->getPath()."/module.json"), true);
-        return $json;
+        return json_decode(file_get_contents($module->getPath()."/module.json"), true);
     }
 
     public function getRequirements(string $moduleName):array{
