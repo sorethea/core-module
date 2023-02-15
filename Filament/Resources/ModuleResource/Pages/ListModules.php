@@ -26,12 +26,12 @@ class ListModules extends ListRecords
     }
 
     public function loadModules(): void{
-        $modules = \Module::all();
+        $modules = \Core::all();
         $name_modules = [];
         foreach ($modules as $module){
             $name = $module->getName();
             $name_modules[] = $name;
-            $class = \Core::find($name)->getClass();
+            $class = $module->getClass();
 
             $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
