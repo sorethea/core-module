@@ -6,7 +6,7 @@ use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Artisan;
 use Modules\Core\Models\Module;
 
-class Core extends \Module
+abstract class Core extends \Nwidart\Modules\Module
 {
     public function getModuleNamespace(){
         return config("modules.namespace","Modules");
@@ -19,11 +19,11 @@ class Core extends \Module
     }
 
     public function getClass(){
-        return $this->get("class");
+        return $this->module->get("class");
     }
 
     public function getRequirements(){
-        return $this->get("requirements");
+        return $this->module->get("requirements");
     }
 
     public function install(string $moduleName):void {
