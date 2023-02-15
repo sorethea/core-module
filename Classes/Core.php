@@ -17,13 +17,13 @@ class Core extends LaravelFileRepository
         return $this->getModuleNamespace()."\\".$moduleName."\\".$this->getModuleProviderPath();
     }
 
-    public function getClass(){
-        return $this->get("class");
-    }
-
-    public function getRequirements(){
-        return $this->get("requirements");
-    }
+//    public function getClass(){
+//        return $this->get("class");
+//    }
+//
+//    public function getRequirements(){
+//        return $this->get("requirements");
+//    }
 
 //    public function install(string $moduleName):void {
 //        $module = \Module::find($moduleName);
