@@ -9,8 +9,5 @@
         "Modules\\Core\\Providers\\CoreServiceProvider"
     ],
     "files": [],
-    "version": "1.0.0",
-    "requirements": [
-        "Core"
-    ]
+    "version": "1.0.0"
 }
