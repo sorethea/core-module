@@ -26,7 +26,7 @@ class ListModules extends ListRecords
     }
 
     public function loadModules(): void{
-        $modules = Module::all();
+        $modules = \Module::all();
         $name_modules = [];
         foreach ($modules as $module){
             $name = $module->getName();
