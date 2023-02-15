@@ -40,9 +40,9 @@ class ModuleResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make("name")->searchable(),
-                Tables\Columns\TextColumn::make("class")->default(fn($record)=>\Core::getClass($record->name)),
-                Tables\Columns\TextColumn::make("requirements")->default(fn($record)=>\Core::getRequirements($record->name)),
-                Tables\Columns\TextColumn::make("version")->default(fn($record)=>\Core::getVersion($record->name)),
+                Tables\Columns\TextColumn::make("class")->default(fn($record)=>\Core::find($record->name)->get("class")),
+//                Tables\Columns\TextColumn::make("requirements")->default(fn($record)=>\Core::getRequirements($record->name)),
+//                Tables\Columns\TextColumn::make("version")->default(fn($record)=>\Core::getVersion($record->name)),
                 Tables\Columns\BooleanColumn::make("enabled")->default(fn($record)=>\Module::find($record->name)->isEnabled()),
                 Tables\Columns\BooleanColumn::make("installed"),
             ])
