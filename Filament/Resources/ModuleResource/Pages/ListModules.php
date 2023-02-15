@@ -31,7 +31,7 @@ class ListModules extends ListRecords
         foreach ($modules as $module){
             $name = $module->getName();
             $name_modules[] = $name;
-            $class = $module->getClass();
+            $class = $module->get("class");
 
             $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
