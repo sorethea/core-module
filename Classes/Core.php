@@ -17,6 +17,10 @@ class Core extends \Module
         return $this->getModuleNamespace()."\\".$moduleName."\\".$this->getModuleProviderPath();
     }
 
+    public function getClass(){
+        return $this->get("class");
+    }
+
     public function getRequirements(){
         return $this->get("requirements");
     }
