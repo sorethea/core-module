@@ -8,6 +8,11 @@ use Modules\Core\Models\Module;
 
 class Core extends \Nwidart\Modules\Module
 {
+    public function __construct(Container $app, string $name, $path)
+    {
+        parent::__construct($app, $name, $path);
+    }
+
     public function getModuleNamespace(){
         return config("modules.namespace","Modules");
     }
