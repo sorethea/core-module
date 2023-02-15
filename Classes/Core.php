@@ -6,17 +6,8 @@ use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Artisan;
 use Modules\Core\Models\Module;
 
-class Core extends \Nwidart\Modules\Module
+class Core extends \Module
 {
-    protected $name;
-    protected $app;
-
-    public function __construct(Container $app, string $name, $path)
-    {
-        $this->name = $name;
-        parent::__construct($app, $name, $path);
-    }
-
     public function getModuleNamespace(){
         return config("modules.namespace","Modules");
     }
@@ -55,18 +46,4 @@ class Core extends \Nwidart\Modules\Module
         return $this->get("class") =="core";
     }
 
-    public function registerAliases(): void
-    {
-        // TODO: Implement registerAliases() method.
-    }
-
-    public function registerProviders(): void
-    {
-        // TODO: Implement registerProviders() method.
-    }
-
-    public function getCachedServicesPath(): string
-    {
-        // TODO: Implement getCachedServicesPath() method.
-    }
 }
