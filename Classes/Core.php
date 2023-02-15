@@ -18,20 +18,27 @@ class Core
     }
 
     public function install(string $moduleName):void {
-        $module = \Module::find($moduleName);
-        $module->enable();
-        app()->register($this->getModuleProviderNamespace($moduleName)."\\InstallServiceProvider");
-        $moduleObj = Module::firstOrCreate(["name" => $moduleName]);
-        $moduleObj->installed = true;
-        $moduleObj->save();
+        try {
+            \DB::beginTransaction();
+            $module = \Module::find($moduleName);
+            $module->enable();
+            app()->register($this->getModuleProviderNamespace($moduleName)."\\InstallServiceProvider");
+            $moduleObj = Module::firstOrCreate(["name" => $moduleName]);
+            \DB::commit();
+        }catch (\Exception $exception){
+            \DB::rollBack();
+        }
+
+        //$moduleObj->installed = true;
+        //$moduleObj->save();
     }
     public function uninstall(string $moduleName):void {
         $module = \Module::find($moduleName);
         $module->disable();
         app()->register($this->getModuleProviderNamespace($moduleName)."\\UninstallServiceProvider");
         $moduleObj = Module::firstOrCreate(["name" => $moduleName]);
-        $moduleObj->installed = false;
-        $moduleObj->save();
+        //$moduleObj->installed = false;
+        //$moduleObj->save();
     }
     public function isCore(string $moduleName):bool {
         return \Module::find($moduleName)->get("class","module") =="core";
