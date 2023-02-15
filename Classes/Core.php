@@ -5,7 +5,7 @@ namespace Modules\Core\Classes;
 use Illuminate\Support\Facades\Artisan;
 use Modules\Core\Models\Module;
 
-class Core
+class Core extends \Module
 {
     public function getModuleNamespace(){
         return config("modules.namespace","Modules");
@@ -16,25 +16,9 @@ class Core
     public function getModuleProviderNamespace($moduleName) :string{
         return $this->getModuleNamespace()."\\".$moduleName."\\".$this->getModuleProviderPath();
     }
-    public function getClass(string $moduleName):string{
-        dd($this->getModuleData($moduleName));
-        $this->getModuleData($moduleName);
-        return $json['class']??'module';
-    }
-    public function getVersion(string $moduleName):string{
-        $json = $this->getModuleData($moduleName);
-        return $json['version']??'dev';
-    }
 
-    public function getModuleData(string $moduleName): array{
-        $module = \Module::find($moduleName);
-        dd($module->json());
-        return json_decode(file_get_contents($module->getPath()."/module.json"), true);
-    }
-
-    public function getRequirements(string $moduleName):array{
-        $json = $this->getModuleData($moduleName);
-        return $json['requirements']??[];
+    public function getRequirements(){
+        return $this->get("requirements");
     }
 
     public function install(string $moduleName):void {
