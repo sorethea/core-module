@@ -2,11 +2,10 @@
 
 namespace Modules\Core\Classes;
 
-use Illuminate\Container\Container;
-use Illuminate\Support\Facades\Artisan;
 use Modules\Core\Models\Module;
+use Nwidart\Modules\Laravel\LaravelFileRepository;
 
-abstract class Core extends \Nwidart\Modules\Module
+class Core extends LaravelFileRepository
 {
     public function getModuleNamespace(){
         return config("modules.namespace","Modules");
