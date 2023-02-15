@@ -42,7 +42,7 @@ class Core extends LaravelFileRepository
         $moduleObj->save();
     }
     public function isCore(string $moduleName):bool {
-        return $this->get("class") =="core";
+        return false;//$this->get("class") =="core";
     }
 
 }
