@@ -8,8 +8,12 @@ use Modules\Core\Models\Module;
 
 class Core extends \Nwidart\Modules\Module
 {
+    protected $name;
+    protected $app;
+
     public function __construct(Container $app, string $name, $path)
     {
+        $this->name = $name;
         parent::__construct($app, $name, $path);
     }
 
