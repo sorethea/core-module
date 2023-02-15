@@ -17,6 +17,7 @@ class Core
         return $this->getModuleNamespace()."\\".$moduleName."\\".$this->getModuleProviderPath();
     }
     public function getClass(string $moduleName):string{
+        dd($this->getModuleData($moduleName));
         $this->getModuleData($moduleName);
         return $json['class']??'module';
     }
