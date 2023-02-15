@@ -7,6 +7,13 @@ use Modules\Core\Models\Module;
 
 class Core extends \Nwidart\Modules\Module
 {
+    protected $name;
+    public function __construct(Container $app, string $name, $path)
+    {
+        $this->name = $name;
+        parent::__construct($app, $name, $path);
+    }
+
     public function getModuleNamespace(){
         return config("modules.namespace","Modules");
     }
