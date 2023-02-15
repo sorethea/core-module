@@ -5,7 +5,7 @@ namespace Modules\Core\Classes;
 use Modules\Core\Models\Module;
 use Nwidart\Modules\Laravel\LaravelFileRepository;
 
-class Core extends LaravelFileRepository
+class Core
 {
     public function getModuleNamespace(){
         return config("modules.namespace","Modules");
@@ -25,14 +25,14 @@ class Core extends LaravelFileRepository
 //        return $this->get("requirements");
 //    }
 
-//    public function install(string $moduleName):void {
-//        $module = \Module::find($moduleName);
-//        $module->enable();
-//        app()->register($this->getModuleProviderNamespace($moduleName)."\\InstallServiceProvider");
-//        $moduleObj = Module::firstOrCreate(["name" => $moduleName]);
-//        $moduleObj->installed = true;
-//        $moduleObj->save();
-//    }
+    public function install(string $moduleName):void {
+        $module = \Module::find($moduleName);
+        $module->enable();
+        app()->register($this->getModuleProviderNamespace($moduleName)."\\InstallServiceProvider");
+        $moduleObj = Module::firstOrCreate(["name" => $moduleName]);
+        $moduleObj->installed = true;
+        $moduleObj->save();
+    }
     public function uninstall(string $moduleName):void {
         $module = \Module::find($moduleName);
         $module->disable();
@@ -42,7 +42,7 @@ class Core extends LaravelFileRepository
         $moduleObj->save();
     }
     public function isCore(string $moduleName):bool {
-        return false;//$this->get("class") =="core";
+        return \Module::find($moduleName)->get("class","module") =="core";
     }
 
 }
