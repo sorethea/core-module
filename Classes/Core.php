@@ -5,7 +5,7 @@ namespace Modules\Core\Classes;
 use Illuminate\Support\Facades\Artisan;
 use Modules\Core\Models\Module;
 
-class Core extends \Module
+class Core extends \Nwidart\Modules\Module
 {
     public function getModuleNamespace(){
         return config("modules.namespace","Modules");
@@ -46,4 +46,18 @@ class Core extends \Module
         return $class =="core";
     }
 
+    public function registerAliases(): void
+    {
+        // TODO: Implement registerAliases() method.
+    }
+
+    public function registerProviders(): void
+    {
+        // TODO: Implement registerProviders() method.
+    }
+
+    public function getCachedServicesPath(): string
+    {
+        // TODO: Implement getCachedServicesPath() method.
+    }
 }
