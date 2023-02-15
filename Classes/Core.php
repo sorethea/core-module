@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Classes;
 
+use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Artisan;
 use Modules\Core\Models\Module;
 
@@ -10,7 +11,6 @@ class Core extends \Nwidart\Modules\Module
     protected $name;
     public function __construct(Container $app, string $name, $path)
     {
-        $this->name = $name;
         parent::__construct($app, $name, $path);
     }
 
