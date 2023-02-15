@@ -18,11 +18,11 @@ class Core extends LaravelFileRepository
     }
 
     public function getClass(){
-        return $this->module->get("class");
+        return $this->get("class");
     }
 
     public function getRequirements(){
-        return $this->module->get("requirements");
+        return $this->get("requirements");
     }
 
 //    public function install(string $moduleName):void {
