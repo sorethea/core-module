@@ -25,14 +25,14 @@ class Core extends LaravelFileRepository
         return $this->module->get("requirements");
     }
 
-    public function install(string $moduleName):void {
-        $module = \Module::find($moduleName);
-        $module->enable();
-        app()->register($this->getModuleProviderNamespace($moduleName)."\\InstallServiceProvider");
-        $moduleObj = Module::firstOrCreate(["name" => $moduleName]);
-        $moduleObj->installed = true;
-        $moduleObj->save();
-    }
+//    public function install(string $moduleName):void {
+//        $module = \Module::find($moduleName);
+//        $module->enable();
+//        app()->register($this->getModuleProviderNamespace($moduleName)."\\InstallServiceProvider");
+//        $moduleObj = Module::firstOrCreate(["name" => $moduleName]);
+//        $moduleObj->installed = true;
+//        $moduleObj->save();
+//    }
     public function uninstall(string $moduleName):void {
         $module = \Module::find($moduleName);
         $module->disable();
