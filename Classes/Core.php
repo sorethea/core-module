@@ -22,13 +22,13 @@ class Core
         return $json['class']??'module';
     }
     public function getVersion(string $moduleName):string{
-
         $json = $this->getModuleData($moduleName);
         return $json['version']??'dev';
     }
 
     public function getModuleData(string $moduleName): array{
         $module = \Module::find($moduleName);
+        dd($module->getRequirements());
         return json_decode(file_get_contents($module->getPath()."/module.json"), true);
     }
 
