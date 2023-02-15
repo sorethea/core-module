@@ -42,8 +42,8 @@ class Core extends \Nwidart\Modules\Module
         $moduleObj->save();
     }
     public function isCore(string $moduleName):bool {
-        $class = \Core::getClass($moduleName);
-        return $class =="core";
+
+        return $this->get("class") =="core";
     }
 
     public function registerAliases(): void
