@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("name")->unique();
             //$table->string("class")->default("module");
             //$table->boolean("enabled")->default(false);
-            $table->boolean("installed")->default(false);
+            //$table->boolean("installed")->default(false);
             $table->timestamps();
         });
     }
