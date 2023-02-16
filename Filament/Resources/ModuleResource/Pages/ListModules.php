@@ -32,10 +32,9 @@ class ListModules extends ListRecords
         foreach ($modules as $module){
             $name = $module->getName();
             $name_modules[] = $name;
-            $coreModule = new CoreModule(app(), $module);
             $class = $module->get("class");
             if(\Core::isCore($module->getName())){
-                $coreModule->install();
+                CoreModule::install();
             }
             $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
