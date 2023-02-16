@@ -3,7 +3,7 @@
 namespace Modules\Core\Classes;
 
 use Illuminate\Container\Container;
-use Modules\Core\Activators\FileInstaller;
+use Modules\Core\Installer\FileInstaller;
 use Nwidart\Modules\Module;
 
 

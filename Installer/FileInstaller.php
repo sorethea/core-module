@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Core\Activators;
+namespace Modules\Core\Installer;
 
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;

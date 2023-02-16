@@ -8,7 +8,7 @@ return [
     ],
     'installed-modules' => [
         'file' => [
-            'class' => \Modules\Core\Activators\FileInstaller::class,
+            'class' => \Modules\Core\Installer\FileInstaller::class,
             'name' => base_path('installed_modules.json'),
             'cache-key' => 'modules.installed',
             'cache-lifetime' => 604800,
