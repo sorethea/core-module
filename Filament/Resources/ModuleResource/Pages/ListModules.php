@@ -41,9 +41,9 @@ class ListModules extends ListRecords
                 $module->disable();
             }
             //$model->enabled = $module->isEnabled();
-            if($class=='core' && !$model->installed){
-                $model->installed = true;
-            }
+//            if($class=='core' && !$model->installed){
+//                $model->installed = true;
+//            }
             //$model->class = $class;
             $model->save();
         }
