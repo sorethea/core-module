@@ -63,6 +63,7 @@ class FileInstaller implements InstallerInterface
 
     public function install(Module $module): void
     {
+        dd($module->getName());
         $this->setInstalledByName($module->getName(),true);
     }
 
@@ -119,7 +120,6 @@ class FileInstaller implements InstallerInterface
      */
     private function writeInstallModulesJson(): void
     {
-        logger(json_encode($this->installedModules, JSON_PRETTY_PRINT));
         $this->files->put($this->installedModulesFile, json_encode($this->installedModules, JSON_PRETTY_PRINT));
     }
 
