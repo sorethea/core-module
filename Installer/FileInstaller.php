@@ -119,8 +119,8 @@ class FileInstaller implements InstallerInterface
      */
     private function writeInstallModulesJson(): void
     {
-        file_put_contents($this->installedModulesFile,$this->installedModules,JSON_PRETTY_PRINT);
-        //$this->files->put($this->installedModulesFile, json_encode($this->installedModules, JSON_PRETTY_PRINT));
+        dd($this->installedModulesFile);
+        $this->files->put($this->installedModulesFile, json_encode($this->installedModules, JSON_PRETTY_PRINT));
     }
 
     /**
