@@ -27,9 +27,8 @@ class CoreModule
     private mixed $installer;
 
 
-    public function __construct(Container $app, Module $module)
+    public function __construct(Container $app)
     {
-        $this->module = $module;
 
         $this->cache = $app['cache'];
         $this->files = $app['files'];
@@ -37,13 +36,13 @@ class CoreModule
         $this->app = $app;
     }
 
-    public function install(): void
+    public function install($module): void
     {
-        $this->install($this->module,true);
+        $this->install($module,true);
     }
 
-    public function uninstall(): void
+    public function uninstall($module): void
     {
-        $this->uninstall($this->module,false);
+        $this->uninstall($module,false);
     }
 }
