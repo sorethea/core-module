@@ -5,7 +5,7 @@ use Illuminate\Config\Repository as Config;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Cache\CacheManager;
 use Modules\Core\Contracts\InstallerInterface;
 use Nwidart\Modules\Module;
 
@@ -25,9 +25,9 @@ class FileInstaller implements InstallerInterface
 
 
     /**
-     * @var Cache
+     * @var CacheManager|mixed
      */
-    private Cache $cache;
+    private CacheManager $cache;
 
     /**
      * @var string
