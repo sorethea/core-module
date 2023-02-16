@@ -16,18 +16,6 @@ class CoreModule
 
     protected Module $module;
 
-    /**
-     * @var string
-     */
-    protected string $name;
-
-    /**
-     * @var string
-     */
-    protected string $path;
-    /**
-     * @var \Illuminate\Filesystem\Filesystem|mixed
-     */
     private mixed $files;
     /**
      * @var \Illuminate\Cache\CacheManager|mixed
