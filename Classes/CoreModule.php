@@ -36,9 +36,8 @@ class CoreModule
         $this->app = $app;
     }
 
-    public function install(\Module $module): void
+    public function install(Module $module): void
     {
-        dd($module->getName());
         $this->install($module,true);
     }
 
