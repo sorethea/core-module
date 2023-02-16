@@ -3,6 +3,7 @@
 namespace Modules\Core\Filament\Resources\ModuleResource\Pages;
 
 use Illuminate\Support\Facades\Artisan;
+use Modules\Core\Classes\CoreModule;
 use Modules\Core\Filament\Resources\ModuleResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
@@ -31,8 +32,11 @@ class ListModules extends ListRecords
         foreach ($modules as $module){
             $name = $module->getName();
             $name_modules[] = $name;
+            $coreModule = new CoreModule($module);
             $class = $module->get("class");
-
+            if(\Core::isCore){
+                $coreModule->install();
+            }
             $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
             ]);
