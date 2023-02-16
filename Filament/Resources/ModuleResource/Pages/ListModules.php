@@ -29,13 +29,12 @@ class ListModules extends ListRecords
     public function loadModules(): void{
         $modules = \Module::all();
         $name_modules = [];
+        $installed_modules = [];
         foreach ($modules as $module){
             $name = $module->getName();
             $name_modules[] = $name;
+            $name_modules[$name] = 0;
             $class = $module->get("class");
-            if(\Core::isCore($module->getName())){
-                \CoreModule::install($module);
-            }
             $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
             ]);
@@ -51,6 +50,7 @@ class ListModules extends ListRecords
             $model->save();
         }
         $table_modules = Module::all()->pluck("name")->toArray();
+        file_put_contents(config("core.installed-modules.files.name"),$installed_modules,JSON_PRETTY_PRINT);
         $diff = array_diff($table_modules,$name_modules);
         if(!empty($diff)){
             foreach ($diff as $name){
