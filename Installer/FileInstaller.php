@@ -6,7 +6,6 @@ use Illuminate\Container\Container;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 use Modules\Core\Contracts\InstallerInterface;
 use Nwidart\Modules\Module;
 
@@ -19,9 +18,9 @@ class FileInstaller implements InstallerInterface
     private Filesystem $files;
 
     /**
-     * @var Config|\config|mixed
+     * @var \Config|\config|mixed
      */
-    private Config $config;
+    private \Config $config;
 
 
     /**
