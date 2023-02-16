@@ -39,7 +39,7 @@ class ListModules extends ListRecords
                 'name'=>$module->getName(),
             ]);
             $enabled = $module->isEnabled();
-            if(!$model->installed && $enabled && !\Core::isCore($module->getName())){
+            if( $enabled && !\Core::isCore($module->getName())){
                 $module->disable();
             }
             //$model->enabled = $module->isEnabled();
@@ -50,8 +50,7 @@ class ListModules extends ListRecords
             $model->save();
         }
         $table_modules = Module::all()->pluck("name")->toArray();
-        dd($installed_modules);
-        file_put_contents(config("core.installed-modules.files.name",base_path('installed_modules.json')),$installed_modules,JSON_PRETTY_PRINT);
+        file_put_contents(config("core.installed-modules.files.name",base_path('installed_modules.json')),$table_modules,JSON_PRETTY_PRINT);
         $diff = array_diff($table_modules,$name_modules);
         if(!empty($diff)){
             foreach ($diff as $name){
