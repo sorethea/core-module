@@ -34,7 +34,7 @@ class ListModules extends ListRecords
             $name_modules[] = $name;
             $class = $module->get("class");
             if(\Core::isCore($module->getName())){
-                CoreModule::install();
+                \CoreModule::install();
             }
             $model = Module::query()->firstOrCreate([
                 'name'=>$module->getName(),
