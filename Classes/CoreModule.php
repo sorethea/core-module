@@ -38,6 +38,7 @@ class CoreModule
 
     public function install(Module $module): void
     {
+        dd($module->getName());
         $this->install($module,true);
     }
 
