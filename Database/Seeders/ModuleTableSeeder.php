@@ -16,9 +16,9 @@ class ModuleTableSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        //\Module::enable("core");
+        \Module::enable("core");
         //\Core::installModule("core");
         //$module = Module::firstOrCreate(["name" => "Core"]);
-        \Core::install("core");
+        //\Core::install("core");
     }
 }
