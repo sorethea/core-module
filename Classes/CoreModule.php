@@ -38,12 +38,11 @@ class CoreModule
 
     public function install(Module $module): void
     {
-        dd($module->getName());
-        $this->install($module,true);
+        $this->installer->install($module,true);
     }
 
     public function uninstall($module): void
     {
-        $this->uninstall($module,false);
+        $this->installer->uninstall($module,false);
     }
 }
