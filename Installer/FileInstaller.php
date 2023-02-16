@@ -132,7 +132,6 @@ class FileInstaller implements InstallerInterface
         if (!$this->files->exists($this->installedModulesFile)) {
             return [];
         }
-        dd(json_decode($this->files->get($this->installedModulesFile,true)));
 
         return json_decode($this->files->get($this->installedModulesFile), true);
     }
