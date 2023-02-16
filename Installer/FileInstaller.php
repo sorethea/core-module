@@ -1,7 +1,7 @@
 <?php
 
 namespace Modules\Core\Installer;
-
+use Illuminate\Config\Repository as Config;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
@@ -17,10 +17,11 @@ class FileInstaller implements InstallerInterface
      */
     private Filesystem $files;
 
+
     /**
-     * @var \Config|\config|mixed
+     * @var Config|\config|mixed
      */
-    private \Config $config;
+    private Config $config;
 
 
     /**
