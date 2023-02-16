@@ -50,7 +50,7 @@ class ListModules extends ListRecords
             $model->save();
         }
         $table_modules = Module::all()->pluck("name")->toArray();
-        file_put_contents(config("core.installed-modules.files.name",base_path('installed_modules.json')),$table_modules,JSON_PRETTY_PRINT);
+        file_put_contents(config("core.installed-modules.files.name",base_path('installed_modules.json')),json_encode($table_modules),JSON_PRETTY_PRINT);
         $diff = array_diff($table_modules,$name_modules);
         if(!empty($diff)){
             foreach ($diff as $name){
