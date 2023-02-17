@@ -9,6 +9,16 @@ use Nwidart\Modules\Module;
 
 class CoreModule extends Module
 {
+    protected $name;
+    protected $path;
+    protected $app;
+
+    public function __construct(string $name)
+    {
+        $path = $this->path;
+        $app = $this->app;
+        parent::__construct($app, $name, $path);
+    }
 
     public function install(): void
     {
