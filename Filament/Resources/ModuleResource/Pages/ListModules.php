@@ -32,7 +32,7 @@ class ListModules extends ListRecords
         $installed_modules = [];
         foreach ($modules as $module){
             $name = $module->getName();
-            $coreModule = new \
+
             $name_modules[] = $name;
             $installed_modules[$name] = false;
             $class = $module->get("class");
