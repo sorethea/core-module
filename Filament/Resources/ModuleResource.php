@@ -5,6 +5,7 @@ namespace Modules\Core\Filament\Resources;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\DeleteAction;
 use Illuminate\Support\Facades\Artisan;
+use Modules\Core\Classes\CoreModule;
 use Modules\Core\Filament\Resources\ModuleResource\Pages;
 use Modules\Core\Filament\Resources\ModuleResource\RelationManagers;
 use Filament\Forms;
@@ -101,7 +102,7 @@ class ModuleResource extends Resource
                         return !\Core::isCore($record->name) && !$record->installed && auth()->user()->can("modules.manager");
                     })
                     ->action(function ($record){
-                        $coreModule = new \CoreModule(app(),$record->name);
+                        $coreModule = new CoreModule(app(),$record->name);
                         $coreModule->install();
                         //$record->installed = true;
                         $record->save();
