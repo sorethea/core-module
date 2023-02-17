@@ -102,8 +102,8 @@ class ModuleResource extends Resource
                     })
                     ->action(function ($record){
 
-                        \Core::install($record->name);
-                        $record->installed = true;
+                        \Core::install();
+                        //$record->installed = true;
                         $record->save();
                         redirect(request()->header("Referer"));
                     }),
