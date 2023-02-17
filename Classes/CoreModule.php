@@ -9,14 +9,11 @@ use Nwidart\Modules\Module;
 
 class CoreModule extends Module
 {
-    protected $name;
-    protected $path;
-    protected $app;
 
     public function __construct(string $name)
     {
-        $path = $this->path;
-        $app = $this->app;
+        $app = app('modules');
+        $path = module_path($name);
         parent::__construct($app, $name, $path);
     }
 
