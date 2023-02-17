@@ -101,7 +101,8 @@ class ModuleResource extends Resource
                         return !\Core::isCore($record->name) && !$record->installed && auth()->user()->can("modules.manager");
                     })
                     ->action(function ($record){
-                        \CoreModule::setName($record->name)->install();
+                        $coreModule = new \CoreModule(app(),$record->name);
+                        $coreModule->install();
                         //$record->installed = true;
                         $record->save();
                         redirect(request()->header("Referer"));
