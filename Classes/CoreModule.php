@@ -9,10 +9,12 @@ use Nwidart\Modules\Module;
 
 class CoreModule extends Module
 {
+    protected $installer;
 
     public function __construct(string $name)
     {
         $app = app();
+        $this->installer = $app[FileInstaller::class];
         $path = module_path($name);
         parent::__construct($app, $name, $path);
     }
