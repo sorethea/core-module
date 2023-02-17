@@ -12,7 +12,7 @@ class CoreModule extends Module
 
     public function __construct(string $name)
     {
-        $app = app('modules');
+        $app = app();
         $path = module_path($name);
         parent::__construct($app, $name, $path);
     }
