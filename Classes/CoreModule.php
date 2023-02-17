@@ -11,9 +11,8 @@ class CoreModule extends Module
 {
     protected $name;
 
-    public function __construct(Container $app, string $name, $path)
-    {
-        parent::__construct($app, $name, $path);
+    public function setName(string $name){
+        $this->name = $name;
     }
 
     public function install(): void
