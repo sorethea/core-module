@@ -7,42 +7,31 @@ use Modules\Core\Installer\FileInstaller;
 use Nwidart\Modules\Module;
 
 
-class CoreModule
+class CoreModule extends Module
 {
-    /**
-     * @var Container
-     */
-    protected Container $app;
 
-    protected Module $module;
-
-    private mixed $files;
-    /**
-     * @var \Illuminate\Cache\CacheManager|mixed
-     */
-    private mixed $cache;
-    /**
-     * @var mixed|FileInstaller
-     */
-    private mixed $installer;
-
-
-    public function __construct(Container $app)
+    public function install(): void
     {
-
-        $this->cache = $app['cache'];
-        $this->files = $app['files'];
-        $this->installer = $app[FileInstaller::class];
-        $this->app = $app;
+        $this->installer->install($this,true);
     }
 
-    public function install(Module $module): void
+    public function uninstall(): void
     {
-        $this->installer->install($module,true);
+        $this->installer->uninstall($this,false);
     }
 
-    public function uninstall($module): void
+    public function registerAliases(): void
     {
-        $this->installer->uninstall($module,false);
+
+    }
+
+    public function registerProviders(): void
+    {
+
+    }
+
+    public function getCachedServicesPath(): string
+    {
+
     }
 }
