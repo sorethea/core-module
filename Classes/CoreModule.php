@@ -9,14 +9,12 @@ use Nwidart\Modules\Module;
 
 class CoreModule extends Module
 {
-    protected $installer;
+    protected mixed $installer;
 
-    public function __construct(string $name)
+    public function boot(): void
     {
-        $app = app();
-        $this->installer = $app[FileInstaller::class];
-        $path = module_path($name);
-        parent::__construct($app, $name, $path);
+        parent::boot();
+        $this->installer = $this->app[FileInstaller::class];
     }
 
     public function install(): void

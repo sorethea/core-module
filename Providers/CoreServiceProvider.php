@@ -4,6 +4,7 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Nwidart\Modules\Module;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -75,7 +76,9 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [];
+        return [
+            Module::class
+        ];
     }
 
     private function getPublishableViewPaths(): array
