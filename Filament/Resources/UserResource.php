@@ -10,7 +10,7 @@ use Filament\Tables;
 use Modules\Core\Filament\Resources\UserResource\Pages;
 use Modules\Core\Filament\Resources\UserResource\RelationManagers\AddressesRelationManager;
 use Modules\Core\Filament\Resources\UserResource\RelationManagers\PhonesRelationManager;
-use Modules\Core\Models\User;
+use Modules\Coresys\Models\User;
 
 class UserResource extends Resource
 {

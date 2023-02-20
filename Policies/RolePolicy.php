@@ -3,7 +3,7 @@
 namespace Modules\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Modules\Core\Models\User;
+use Modules\Coresys\Models\User;
 
 class RolePolicy
 {
