@@ -5,14 +5,14 @@ namespace Modules\Core\Providers;
 use Filament\Facades\Filament;
 use Filament\Navigation\NavigationGroup;
 use Filament\PluginServiceProvider;
-use Modules\Core\Filament\Resources\ActivityResource;
-use Modules\Core\Filament\Resources\ModuleResource;
-use Modules\Core\Filament\Resources\PermissionResource;
-use Modules\Core\Filament\Resources\RoleResource;
-use Modules\Core\Filament\Resources\SettingResource;
-use Modules\Core\Filament\Resources\UserResource;
-use Spatie\LaravelPackageTools\Package;
 use Modules\Core\Filament\Pages\CorePage;
+use Modules\Core\Filament\Resources\SettingResource;
+use Modules\LAM\Filament\Resources\ActivityResource;
+use Modules\LAM\Filament\Resources\ModuleResource;
+use Modules\LAM\Filament\Resources\PermissionResource;
+use Modules\LAM\Filament\Resources\RoleResource;
+use Modules\LAM\Filament\Resources\UserResource;
+use Spatie\LaravelPackageTools\Package;
 
 class FilamentServiceProvider extends PluginServiceProvider
 {
