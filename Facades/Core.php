@@ -8,6 +8,6 @@ class Core extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Modules\Core\Classes\Core::class;
+        return "lam";
     }
 }
