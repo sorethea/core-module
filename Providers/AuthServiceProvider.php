@@ -3,10 +3,10 @@
 namespace Modules\Core\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Modules\Core\Policies\PermissionPolicy;
-use Modules\Core\Policies\RolePolicy;
-use Modules\Core\Policies\UserPolicy;
 use Modules\LAM\Models\User;
+use Modules\LAM\Policies\PermissionPolicy;
+use Modules\LAM\Policies\RolePolicy;
+use Modules\LAM\Policies\UserPolicy;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
